@@ -1,0 +1,124 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{kotex}
+
+\renewcommand{\baselinestretch}{1.5}
+\setlength{\oddsidemargin}{.5in}
+\setlength{\evensidemargin}{1.5pt}
+
+\usepackage{amsmath,amssymb,amsthm} %\usepackage{amscd}
+\usepackage{latexsym}
+\usepackage{fancyhdr}
+\usepackage{float,srcltx,epsfig}%for .eps file
+\usepackage{multirow}
+\usepackage{enumerate}
+\usepackage{mathrsfs}
+\usepackage{algorithm}
+\usepackage{amsfonts}
+\makeindex %
+\newenvironment{explain}{\begin{quote}}{\hfill $\square$\end{quote}}
+\newenvironment{glos}[1]{\begin{quote}$\quad$\textbf{#1}\\}{\end{quote}}
+\newenvironment{problem}[1]{\begin{quote}$\quad$\textbf{#1}\\}{\end{quote}}
+\newenvironment{theorem}[1]{\begin{quote}$\quad$\textbf{#1}\\}{\end{quote}}
+
+
+\newcommand{\myindex}[1]{#1\index{#1}}
+\newcommand{\mi}[1]{#1\index{#1}}
+\newcommand{\SK}{\hspace{0.3cm}}
+
+%\newcommand{\Z}{{\mathbb Z}} 
+%\newcommand{\Q}{{\mathbb Q}}
+%\newcommand{\F}{{\mathbb F}}
+%\newcommand{\R}{{\mathbb R}}
+%\newcommand{\C}{{\mathbb C}}
+
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+\newcommand{\ord}{{\operatorname{ord }}}
+\newcommand{\ind}{{\operatorname{ind }}}
+\newcommand{\rank}{{\operatorname{Rank}}}
+
+\pagestyle{myheadings}   %
+\pagestyle{fancyplain}
+\fancyhf{}% clear all fields
+%\fancyhead[LE,RO]{\bfseries\thepage}
+%\fancyhead[LO]{\bfseries\tiny\rightmark}
+%\fancyfoot[RO]{\textsf{\small{Copyright \copyright 2018 Jung Hee Cheon.}}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\def\BigRoman{\uppercase\expandafter{\romannumeral\number\count 255 }}
+\def\Romannumeral{\afterassignment\BigRoman\count255=}
+\title{Shapiro's Lemma}
+\author{Donghyun Kim }
+\date{March 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Definition of cohomology}
+Let G be a group, $\Lambda = Z[G] $ be a its integral group ring. 
+G-module means $\Lambda $ module. Define $A^G = \{a\in A| \forall g \in G, ga = a \}$.
+Let A,B,C be G-modules.(it is not fixed and dummy object in this text.)
+
+We can give a G-module structure on $Hom(A,B)$ by defining 
+
+$\forall \phi \in Hom(A,B),\forall g \in G,  (g\cdot \phi) (a) = g \cdot (\phi(g^-1a)) $
+
+For any abelian group X, we can form the G-module $Hom(\Lambda,X)$.
+
+And this type of G-module is called co-induced.
+
+Let $\cdots\rightarrow P_{1} \rightarrow P_{0}\rightarrow \mathbb{Z}$ be a free resolution of $\mathbb{Z}$ as a G-module on trivial action.
+
+We can form the chain complex $K = Hom_{G}(P,A)$,which means
+
+$0 \rightarrow Hom_{G}(P_0,A) \rightarrow Hom_{G}(P_1,A) \rightarrow \cdots $
+
+If we define $H^{q}(G,A)$ as a q-th cohomology group of this complex, $H^{0}(G,A)\simeq A^G $.
+
+Also, it is independent from choice of resolution.
+
+To prove this, consider G-module exact sequence $0 \rightarrow A \rightarrow B \rightarrow C \rightarrow 0$
+
+Since $P_{i}$ are projective, we get a short exact sequence of chain complex.
+
+By homological algebra, we can obtain long exact sequence of cohomology group.
+
+$\cdots \rightarrow H^{q}(G,A) \rightarrow H^{q}(G,B) \rightarrow H^{q}(G,C) \rightarrow H^{q+1}(G,A) \rightarrow \cdots$
+
+Also, when $A = Hom(\Lambda ,X)$ is co-induced, $Hom_{G}(B,A) \simeq Hom(B,X) $
+
+by isomorphism $\phi \mapsto \psi$,$\psi(b) = \phi(b)(1)$ for any $b \in B$
+
+Therefore, $H^{a}(G,A)=0$ when $q \ge 1$ because $P_i$ are free abelian groups.
+
+Now let $A'= Hom(\Lambda,A)$.
+
+There is a natural injection $A \rightarrow A'$and short exact sequence 
+
+$0 \rightarrow A \rightarrow A' \rightarrow A''$
+
+Long exact sequence of this short exact sequence gives us  isomorphisms 
+
+$H^{q}(G,A'') \simeq H^{q+1}(G,A)$ when $q \ge 1$ and $H^{1}(G,A)\simeq Coker(H^{0}(G,A')$
+
+Thus we can construct cohomology group inductively.
+
+\section{Shapiro's Lemma}
+Let G' be a subgroup of G and A' be a G'-module.
+
+Then $A = Hom_{G'}(\Lambda, A')$ is a G-module.
+
+(Define $\forall \phi \in A, g\phi(g') = \phi(g'g^{-1})$)
+
+Shapiro's Lemma is $H^{q}(G,A) = H^{q}(G',A')$ for all $q \ge0$
+
+pf) When we choose a free $\Lambda$ resolution of $\mathbb{Z}$, it is also a free $\Lambda ' = \mathbb{Z}[G]$ resolution.
+
+And $Hom_{G}(P,A)=Hom_{G}(P, Hom_{G'}(\Lambda, A') \simeq Hom_{G}(G',A')$
+
+By isomorphism $\phi \mapsto \psi, \psi(p)= \phi(p)(1) \forall p \in P $
+
+
+\end{document}
