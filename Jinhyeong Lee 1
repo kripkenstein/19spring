@@ -47,6 +47,10 @@
 \date{}
 \begin{document}
 \maketitle
+
+%%Dohyeong: try to include an introduction.
+%%Dohyeong: try to avoid a sentence that starts with a math symbol
+
 \begin{defn} $K$ be any field, and $f(x) \in K[x]$ be a cubic polynomial with coefficients in $K$ which has distinct roots in $K$ or extension of $K$. We assume $K$ does not have characteristic 2. The solutions of the equation
 \[y^2 = f(x)\]
 are called $K'$-points of the elliptic curve and the equation is called elliptic curve.
@@ -85,6 +89,8 @@ By residue theorem, the sum of the residues can be expressed as
 \[ \displaystyle\frac{1}{2\pi i} \displaystyle\int_C f(z)dz\]
 
 and since $f(z)$ has the same value on the parallel sides with opposite orientation, the integral value is exactly zero. Also by this proposition, we can check that non constant $f(z) \in \mathcal{E}_L $ has at least two poles or has a multiple pole, since if it has only one simple pole, then the residue cannot be zero.
+
+%%Dohyeong: line above `and since...' should begin without any indents
 
 \begin{prop}
 Suppose $f(z)$ has no zeros on the boundary of $\alpha +\Pi$. Then the sum of orders of zeros of $f(z)$ is equal to the sum of orders of poles of $f(z)$.
