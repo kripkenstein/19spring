@@ -1,0 +1,101 @@
+\documentclass[11pt]{article}
+\usepackage{amsfonts}
+
+\title{L-function and the theorem on arithmetic progressions}
+\author{Kangsig Kim}
+
+\begin{document}
+
+\maketitle
+\textbf{Abstract.} We define the Dirichlet L-function and use its properties to prove that there exist infinitely many prime numbers $p$ such that $p\equiv a$(mod m) where $a$ and $m$ are relatively prime integers $\geq1$.
+\\
+\\
+\\
+\\
+Let $(\lambda_n)$ be an increasing sequence of real numbers tending to infinity. A Dirichlet series with exponents $(\lambda_n)$ is a series of the form
+\begin{center}
+    $f(z)=\sum a_n e^{-\lambda_n z} \quad (a_n, z\in \mathbb{C})$
+\end{center}
+These are the properties of Dirichlet series from complex analysis.
+\\
+\\
+\textbf{Proposition 1.}
+If $f$ converges for $z=z_0$, it converges for $Re(z)>Re(z_0)$ and it is holomorphic in that domain. \\\\
+\textbf{Proposition 2.}
+Let $a_n$ are real $\geq0$. Suppose that $f$ converges for $Re(z)>\rho$ and that $f$ can be extended analytically to a function holomorphic in a neighborhood of the point $z=\rho$. Then there exists $\epsilon>0$ such that $f$ converges for $Re(z)>\rho-\epsilon$.
+\\
+\\
+\\
+When $\lambda_n=\;$log $n$, we get $f(s)=\displaystyle\sum_{n=1}^{\infty} {a_n\over n^s}$, which is a form of the zeta function and L-function. The notation $s$ being traditional for the variable.
+\\
+\\
+Recall the properties of the zeta function $\zeta(s)=\displaystyle\sum_{n=1}^{\infty} {1\over n^s}=\displaystyle\prod_{p \; prime} {1\over 1-p^{-s}}$, which equalities holds for $Re(s)>1$.
+\\
+\\
+\textbf{Proposition 3.}
+(a) $\zeta(s)$ is holomorphic and nonzero for $Re(s)>1$. \\
+(b) $\zeta(s)={1\over s-1}+\phi(s)$, where $\phi(s)$ is holomorphic for $Re(s)>0$. Thus $\zeta(s)$ extends analytically for $Re(s)>0$ and has a simple pole at $s=1$.
+\\
+\\
+\\
+Let $G$ be a finite abelian group. A character of $G$ is a homomorphism of $G$ into the multiplicative group $\mathbb{C}^*$ of complex numbers. The characters of $G$ form a group $Hom(G,\mathbb{C}^*)$ which we denote by $\hat{G}$ and call the \textit{dual} of $G$. Note that the group $\hat{G}$ is also a finite abelian group of the same order as $G$. For $\chi\in\hat{G}$ and $x\in G$, we have $|\chi(x)|=1$ because $\chi(x)^n=\chi(x^n)=\chi(1)=1$ where $n$ is the order of $x$.
+\\
+\\
+\textbf{Proposition 4.}
+Let $n$ be the order of $G$ and let $\chi\in\hat{G}$. Then
+\begin{center}
+    $\displaystyle\sum_{x\in G} \chi(x)=\left \{\begin{array}{l}
+    n,\quad if \; \chi=1 \\
+    0,\quad if \; \chi\neq 1.
+    \end{array}
+    \right.$
+\end{center}
+Proof) The first formula is obvious. To prove the second, choose $y\in G$ such that $\chi(y)\neq 1$. Then $\chi(y)\displaystyle\sum_{x\in G} \chi(x)=\displaystyle\sum_{x\in G} \chi(xy)=\displaystyle\sum_{x\in G} \chi(x)$, hence $(\chi(y)-1)\displaystyle\sum_{x\in G} \chi(x)=0$. Since $\chi(y)\neq 1$, this implies $\displaystyle\sum_{x\in G} \chi(x)=0$.
+\\
+\\
+\\
+\textbf{Proposition 5.}
+Let $x \in G$. Then
+\begin{center}
+    $\displaystyle\sum_{\chi\in \hat{G}} \chi(x)=\left \{\begin{array}{l}
+    n,\quad if \; x=1 \\
+    0,\quad if \; x\neq 1.
+    \end{array}
+    \right.$
+\end{center}
+This follows from Proposition 4 applied to the dual group $\hat{G}$.
+\\
+\\
+\\
+Let $m\geq 1$ be a fixed integer. We let $(\mathbb{Z}/m\mathbb{Z})^*$ the multiplicative group of invertible elements of the ring $\mathbb{Z}/m\mathbb{Z}$ and let $\chi$ be a character of $(\mathbb{Z}/m\mathbb{Z})^*$. We extend the domain of $\chi$ to whole $\mathbb{Z}$ by putting $\chi(a)=0$ if $a$ is not prime to $m$.\\
+The corresponding L-function is defined by the Dirichlet series
+\begin{center}
+    $L(s,\chi)=\displaystyle\sum_{n=1}^{\infty} \chi(n)/n^s$
+\end{center}
+\textbf{Proposition 6.}
+For $\chi=1$, we have $L(s,1)=F(s)\zeta(s)$ with $F(s)=\displaystyle\prod_{p|m} (1-p^{-s})$. \\ In particular $L(s,1)$ extends analytically for $Re(s)>0$ and has a simple pole at $s=1$.
+\\
+\\
+\\
+\textbf{Proposition 7.}
+For $\chi\neq 1$, the series $L(s,\chi)$ converges absolutely in $Re(s)>1$; one has
+\begin{center}
+    $L(s,\chi)=\displaystyle\prod_{p \; prime} {1\over 1-\chi(p)p^{-s}} \quad for \; Re(s)>1$
+\end{center}
+Proof) Since $\displaystyle\sum_{n=1}^{\infty} {1\over n^\alpha}$ converges for $\alpha>1$, $\alpha\in\mathbb{R}$, and $\chi(n)$ are bounded, we see that $L(s,\chi)=\displaystyle\sum_{n=1}^{\infty} \chi(n)/n^s$ converges absolutely for $Re(s)>1$.
+\\ Since $\chi(ab)=\chi(a)\chi(b)$ for every $a,b\in \mathbb{Z}/m\mathbb{Z}$, we get
+\begin{center}
+   $\displaystyle\sum_{n=1}^{\infty} \chi(n)/n^s=\displaystyle\prod_{p \; prime}\bigg(\displaystyle\sum_{m=1}^{\infty} \chi(p^m)/p^{-ms}\bigg)=\displaystyle\prod_{p \; prime} {1\over 1-\chi(p)p^{-s}}$
+\end{center}.
+\\
+\\
+\\
+\\
+The key point of Dirichlet's proof is to show that $L(1,\chi)\neq 0$ for all $\chi\neq 1$. We continue on the next paper.
+\\
+\\
+\\
+\section*{References}
+[1] J.-P.Serre, \textit{A Course in Arithmetic}, Springer, 1973
+
+\end{document}
