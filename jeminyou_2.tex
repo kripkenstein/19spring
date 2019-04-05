@@ -1,0 +1,233 @@
+\documentclass[a4paper,11pt]{article}
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz-cd}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{titling}
+\usepackage[left=2cm,right=2cm,top=1cm,bottom=2cm,a4paper]{geometry}
+\usepackage{mathrsfs}
+\usepackage{calrsfs}
+
+
+
+\begin{document}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{exm}[thm]{Example}
+\newtheorem{prp}[thm]{Proposition}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{nota}[thm]{Notation}
+
+\font\myfont=cmr12 at 20pt
+
+\title{\vspace{-5ex} \myfont General Elliptic Curves}
+\author{Jemin You}
+\date{\vspace{-5ex}}
+\maketitle
+
+\setcounter{section}{-1}
+
+We follow Katz and Mazur, `Arithmetic Moduli of Elliptic Curves'.
+
+\section{Introduction}
+
+We formulate an algebro-geometric viewpoint towards elliptic curves.
+An essential ingredient is the notion of moduli problems and fine moduli spaces.
+
+Unfortunately, another essential ingredient, the languages of scheme theory, will not be explained at all.
+They are to be thought of `glued rings', in analogue to manifolds being `glued disks', except there are less functions on rings so local structures are nontrivial.
+Think of glued rings to be coordinate rings of affine algebraic varieties over $\mathbb{C}$.
+We will explain the underlying concepts through examples.
+
+\section{Category of Elliptic Curves}
+\begin{defn}
+An $\textbf{elliptic curve}$ is a morphism of schemes $E\to$$S$ together with a section, where the morphism is proper smooth of dimension $1$ having geometric fibres(=fibres over algbraically closed fields) connected curves of genus $1$.
+\end{defn}
+
+\begin{exm}
+The morphism of complex algebraic varieties
+\[
+\{([X_0:X_1:X_2],j) \in \mathbb{CP}^2\times(\mathbb{C}\setminus\{0,1728\}):X_2^2X_0-X_1^3-\frac{27}{4}\frac{1728-j}{j}(X_1X_0^2+X_0^3)=0\} \to \{j \in \mathbb{C} \setminus \{0,1728\}\}
+\]
+given by the projection onto $j$-coordinates is an elliptic curve over $\mathbb{C}$, and also over $\mathbb{Q}$ if we restrict the $j$s to be rational.
+If we fix any $j\neq0,1728$, the fibre of the above morphism is a complex elliptic curve of that $j$-invariant value.
+\end{exm}
+
+So scheme-theoritic notion of elliptic curves is a generalized version of algebraically varying families of complex elliptic curves.
+This is how we formulate familiy of varying schemes with parameters.
+
+\begin{nota}
+We denote by $X/Y$ a morphism $X\to$$Y$ of schemes, and call $X$, or more precisely the morphism itself, a $\textbf{scheme over $Y$}$, or a $\textbf{$Y$-scheme}$.
+Also, by scheme over a ring $A$ we mean a scheme over the spectrum $\textnormal{Spec}(A)$ of $A$, which is a geometric space(a local-ringed space) associated to $A$.
+\end{nota}
+
+\begin{defn}
+Let $A$ be a ring.
+The category $Ell/A$ of elliptic curves consist of the followings:\\
+$1)$The objects are elliptic curves $E\to$$S$ where $S$ is an $A$-scheme.\\
+$2)$The morphism set from an elliptic curve $F\to$$T$ to another $E\to$$S$ are Cartesian diagrams
+\[
+\begin{tikzcd}
+F \arrow[r] \arrow[d] & E \arrow[d] \\
+T \arrow[r] & S
+\end{tikzcd}
+\]
+where $T\to$$S$ is an $A$-morphism.
+When $A=\mathbb{Z}$, we just write $Ell$ instead of $Ell/\mathbb{Z}$.
+\end{defn}
+
+\begin{exm}
+If we let a reduced complex point go into the "$j$-line" from the previous example so $j=1728\cdot\frac{27}{31}$, then we obtain a morphism of complex elliptic curves that embeds
+\[
+\{[X_0:X_1:X_2] \in \mathbb{CP}^2 : X_2^2X_0-X_1^3-X_1X_0^2-X_0^3=0\}
+\]
+into the previous example.
+\end{exm}
+Thus a morphism of elliptic curves is a "mapping of continuous families of elliptic curves" that elliptic curves as geometric fibres are mapped isomorphically.
+
+\section{Moduli Problems}
+
+\begin{defn}
+Let $\mathcal{C}$ be a category where the collections of morphisms between objects are sets("small").
+A $\textbf{moduli problem}$ on $\mathcal{C}$ is a contravariant functor,
+\[
+\mathcal{P}:\mathcal{C}^{op} \to \textit{Sets}
+\]
+from the category $\mathcal{C}$ to the category of sets.
+We call this moduli problem $\mathcal{P}$ $\textbf{representable}$ if there exist an object $X$ of $\mathcal{C}$ such that
+\[
+\mathcal{P} \simeq h_X
+\]
+where $h_X(Y):=\textnormal{Hom}_{\mathcal{C}}(Y,X)$ and $\simeq$ denoteds the isomorphism of functors("natural equivalences").
+The $X$ above is called the $\textbf{fine moduli space}$ of the moduli problem $\mathcal{P}$.
+\end{defn}
+
+\begin{rem}
+Due to a well-known result which states that $\mathcal{C}$ is embedded as full subcategory via
+\[
+h:\mathcal{C}\to\textit{Sets}^{\mathcal{C}^{op}}, \enskip X \mapsto h_X
+\]
+(the Yoneda embedding), $X$ is unique up to isomorphism.
+\end{rem}
+
+\begin{exm}[The Grassmannian]
+Let $V$ be a complex vector space of dimension $n$ and let $k$ be an nonnegative integer not bigger than $n$.
+Let $\mathcal{C}=\textit{Sch}/\mathbb{C}$ be the category of schemes over $\mathbb{C}$.
+The functor
+\[
+\mathfrak{Gr}(k,V):S\to\{\textnormal{closed subschemes of }S\times\mathbb{P}(V)\textnormal{ that are flat over $S$ with linear $(k-1)$-dimensional fibres}\}
+\]
+($\textbf{flat}$=algebro-geometric version of continuously varying familiy, and dimension drops to $k-1$ since we are in the projective space) is represented by the complex Grassmannian
+\[
+\textnormal{Gr}(k,V) = \{k\textnormal{-planes of }V\} \subseteq \mathbb{P}(\wedge^kV)
+\]
+which is a complex projective manifold of dimension $k(n-k)$.
+Thus Gr$(k,V)$ is the fine moduli space of $\mathfrak{Gr}(k,V)$.
+\end{exm}
+
+So the functorial point of view lets us study moduli problems, which should intuitively be taken as classifying geometric object and structures, in a way that enlightens us how families can vary in a given category.
+For example, studying one-parameter family of $k$-planes of $V$ is equivalent to studying maps from a complex affine/projective line to the Grassmannian Gr$(k,V)$.
+
+\section{The Main Result}
+
+\begin{thm}
+There exists a scheme-theoritic interpretation of $\Gamma$-structures where $\Gamma$ is one of $\Gamma_0(N)$, $\Gamma_1(N)$, $\Gamma(N)$s from the last week.
+These define moduli problems on $Ell$, of which we denote by $[\Gamma]$.
+Fix an elliptic curves $E\to$$S$.
+Then the moduli problem on $\textit{Sch}/S$
+\[
+T \mapsto [\Gamma](E_T/T)
+\]
+(and $E_T$ is the fiber product of $E\to$$S$ and $T\to$$S$) is representable by a regular finite flat $S$-scheme.
+\end{thm}
+
+\begin{rem}
+The $\Gamma$-structures mentioned above over $\mathbb{C}$ are precisely the ones from the last week.
+\end{rem}
+
+\begin{defn}
+A moduli problem $\mathcal{P}$ on $Ell/A$ is $\textbf{relatively representable}$ if the results of the theorem holds.
+That is, for any elliptic curve $E/S$ over $A$, the functor on $\textit{Sch}/S$ given by
+\[
+T \mapsto \mathcal{P}(E_T/T)
+\]
+is representable.
+Therefore, $[\Gamma]$s above are relatively representable.
+\end{defn}
+
+The theorem hence tells us that for families of which the continuous varying is controlled by a fixed family of $\Gamma$-structured elliptic curves are represented by a fixed family of elliptic curve parametrized by a $S$-scheme.
+
+Unfortunately, we cannot do this for all bases schemes $S$: the moduli problems $[\Gamma]$ are not representable on $Ell$.
+This is because schemes relatively representing $[\Gamma]$(in the above sense) have nontrivial automorphisms, in analogue to non-existence of a fine moduli space of complex elliptic curves due to a nontrivial automorphism $-1$ (or more for $j=0,1728$).
+
+Hence, the approach taken is to find the "best-approximating" schemes for the moduli problems $[\Gamma]$.
+These are called $\textbf{coarse moduli schemes}$.
+They correspond to the "$j$-line" $\mathbb{A}^1_{\mathbb{C}}=\mathbb{C}$ from the last week.
+Their geometric points(think them of complex points) correspond bijectively to $\Gamma$-structured elliptic curves.
+Then the coarse moduli schemes turn out to be finite over the "$j$-line" (over $\mathbb{Z}$) and can be $\textbf{compactified}$ via "adding the cusps $j=\infty$".
+This is what we've done last week when we compactified $\mathbb{A}^1_{\mathbb{C}}=\mathbb{C}$ to $\mathbb{C}\mathbb{P}^1$.
+
+Starting from next week, we will go through the study of the compactifications near the cusps.
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
