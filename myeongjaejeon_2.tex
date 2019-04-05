@@ -1,0 +1,242 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amscd, amsthm, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\marginparwidth 40pt
+\marginparsep 10pt
+\topmargin -20pt
+\headsep 10pt
+\textheight 8.7in
+\textwidth 6.65in
+\linespread{1.2}
+
+\title{A Height Function on \(E(\mathbb{Q})\)}
+\author{Myeong Jae Jeon}
+\date{}
+
+
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage[normalem]{ulem}
+\usepackage{enumerate}
+\usepackage[utf8]{inputenc}
+\usepackage[top=1 in,bottom=1in, left=1 in, right=1 in]{geometry}
+\usepackage{blindtext}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage{romannum}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+
+\urlstyle{same}
+\newcommand{\matlab}{{\sc Matlab} }
+\newcommand{\cvec}[1]{{\mathbf #1}}
+\newcommand{\rvec}[1]{\vec{\mathbf #1}}
+\newcommand{\ihat}{\hat{\textbf{\i}}}
+\newcommand{\jhat}{\hat{\textbf{\j}}}
+\newcommand{\khat}{\hat{\textbf{k}}}
+\newcommand{\minor}{{\rm minor}}
+\newcommand{\trace}{{\rm trace}}
+\newcommand{\spn}{{\rm Span}}
+\newcommand{\rem}{{\rm rem}}
+\newcommand{\ran}{{\rm range}}
+\newcommand{\range}{{\rm range}}
+\newcommand{\mdiv}{{\rm div}}
+\newcommand{\proj}{{\rm proj}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\attn}[1]{\textbf{#1}}
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{main}{Main Theorem}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{ex}[thm]{Example}
+\newtheorem*{note}{Note}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{exercise}{Exercise}
+\theoremstyle{definition}
+\newtheorem*{Rule}{Rule}
+\newcommand{\bproof}{\bigskip {\bf Proof. }}
+\newcommand{\eproof}{\hfill\qedsymbol}
+\newcommand{\Disp}{\displaystyle}
+\newcommand{\qe}{\hfill\(\bigtriangledown\)}
+\setlength{\columnseprule}{1 pt}
+
+\newcommand{\rr}{\mathbb{R}}
+
+\newcommand{\al}{\alpha}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\aff}{aff}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The Mordell-Weil theorem says that an abelian group \(E(K)\) is finitely generated for any number field \(K\) . The proof of Mordell-Weil theorem consists of two parts. The first one is showing the existence of the height function on an elliptic curve satisfying certain properties, and the second one is the proof of the weak Mordell-Weil theorem. Combining these two results, the descent theorem tells us immediately that \(E(K)\) is finitely generated. We will prove the Mordell-Weil theorem for elliptic curves over the rational field. In this article, we prove the first part of the proof: the existence of the height function on \(E(\mathbb{Q})\) satisfying the desired properties. 
+\end{abstract}
+
+\section{Existence of a certain height function on \(E(\mathbb{Q})\)} \label{section-E}
+
+Our goal in this article is to define a height function on \(E(\mathbb{Q})\) satisfying certain properties. To specify these properties, recall the descent theorem as follows.
+
+\begin{thm}[Descent Theorem]
+ Let A be an abelian group. Suppose that there exists a (height) function
+    \begin{align*}
+        h:A \xrightarrow{} \mathbb{R}
+    \end{align*}
+    with the following properties: \\
+    (a) For every constant \(C_1\), the set
+        \begin{gather*}
+            \{P \in A : h(P) \leq C_1\}
+        \end{gather*} 
+            \par is finite. \\
+    (b) Let \(P_0 \in A\). There is a constant \(C_2\), depending on A and \(P_0\), such that
+        \begin{gather*}
+            h(P+ P_0) \leq 2h(P) + C_2 \text{  for all \(P \in A\)}
+        \end{gather*}
+    (c) There are an integer \(m \geq 2\) and a constant \(C_3\), depending on A, such that
+        \begin{gather*}
+            h(mP) \geq m^2 h(P) - C_3 \text{  for all \(P \in A\)}
+        \end{gather*} \\
+    Suppose further that for the integer m in (c), the quotient group A/mA is finite. Then A is finitely generated.
+\end{thm}
+
+In our cases, the abelian group \(A\) in the theorem is \(E(\mathbb{Q})\), so we will find a height function on \(E(\mathbb{Q})\) satisfying conditions (a)-(c), in particular with \(m=2\). Then the weak Mordell-Weil theorem says that the quotient group \(E(\mathbb{Q})/2E(\mathbb{Q})\) is finite and hence \(E(\mathbb{Q})\) is finitely generated. We define a height function \(h\) on \(E(\mathbb{Q})\) as follows and prove it is a desired height function. Here, our elliptic curve is defined by the equation \(y^2= x^3 + Ax +B \). Proofs are in increasing order of difficulty.
+
+\begin{defn} The (logarithmic) height on \(E(\mathbb{Q})\) is the function \(h : E(\mathbb{Q}) \rightarrow \mathbb{R}\) defined by 
+    \begin{align*}
+        h(P) =  \begin{cases} 
+                        \log H(x(P)) & P \ne \infty \\
+                        0 & P = \infty 
+                   \end{cases}
+    \end{align*}
+    where \( x(P) \) is the x-coordinate of P and \(H(t) = max( \lvert p \rvert , \lvert q \rvert), \text{ } t=p/q \in \mathbb{Q}\) is a fraction in lowest term. H(t) is called the height of t. Note that \(h\) is non-negative since \(x(P) \geq 1\) for all \(P\).
+\end{defn}
+
+\begin{proof}
+    \textit{(a)}\ Given constant \(C\), there are at most \((2C+1)^2\) possible \( x\in \mathbb{Q}\) satisfying \( H(x) < C \) and given such \(x\), there are at most two values of \(y\) such that \( (x,y) \in E(\mathbb{Q})\). Hence the set given in (a) is finite.
+    \\
+    
+    \textit{(b)}\ Fix \(P_0 = (x_0, y_0)\) and let \(P = (x,y)\) be given. We may assume \(C_2 > \max{\{h(P_0), h(2P_0)\}}\) which guarantees that (a) is true for \( P_0 = \infty\) or \(P \in \{P_0, -P_0, \infty\} \). In other cases, after elementary calculation and comparing divisors of numeraters and denominators of coordinates, we can write 
+        \begin{align*}
+            P_0 = \bigg( \frac{a_0}{d_0^2} , \frac{b_0}{d_0^3} \bigg), \quad P = \bigg( \frac{a}{d^2} , \frac{b}{d^3} \bigg)
+        \end{align*}
+    with reduced forms. On the other hand, using group laws in \(E(\mathbb{Q})\), we can write
+        \begin{align*}
+            x(P+P_0) = \bigg( \frac{y-y_0}{x-x_0} \bigg)^2 - x - x_0
+        \end{align*}
+    Using the Weierstrass equation \( y^2 = x^3 + Ax + b \) and coordinates, we can show that
+        \begin{align*}
+            x(P+P_0) &= \frac{ (xx_0+A)(x+x_0) + 2B - yy_0}{(x-x_0)^2}
+                     \\
+                     &= \frac{ (aa_0 + Ad^2d_0^2)(ad_0^2+a_0d^2) + 2Bd^4d_0^4-2bdb_0d_0}{(ad_0^2-a_0d^2)^2}
+        \end{align*}
+    Note that cancellation between numerator and denominator can only decrease the height, so we have an estimation
+        \begin{align*}
+            H(x(P+P_0)) \le C_2' \max \{ \lvert a \rvert ^2, \lvert d \rvert ^4, \lvert bd \rvert \} 
+        \end{align*}
+    where \(C_2'\) only depends on \( A\), \(B\), \(a_0\), \(b_0\), \(d_0\). Note that \(H(x(P)) = \max \{ \lvert a \rvert, \lvert d \rvert ^2 \} \), so we are done unless \( \lvert bd \rvert \) becomes the maximum on the right hand side. Meanwhile, using the fact that \(P\) is a point on the given elliptic curve, we obtain
+        \begin{align*}
+            b^2 = a^3 + Aad^4 + Bd^6
+        \end{align*}
+    so that
+        \begin{align*}
+            \lvert b \rvert \le C_2'' \max \{ \lvert a \rvert ^{3/2}, \lvert d \rvert^3\}
+        \end{align*}
+    where \(C_2''\) only depends on \(A\), \(B\). Consequently, combining with the previous result, we can conclude that
+        \begin{align*}
+            H(x(P+P_0)) \le C_2''' \max \{ \lvert a \rvert ^2, \lvert d \rvert ^4 \} = C_2'''H(x(P))^2
+        \end{align*}
+    where \(C_2'''\) only depends on \(E(\mathbb{Q})\) and \(P_0\). Taking logarithm on the both hand sides gives (b).
+    \\
+    
+    \textit{(c)}\ Our method would be quite an ad hoc way for this proof. Recall that we are proving this theorem for \(m=2\). That is, we find a constant \(C_3\) which depends on the given elliptic curve, such that
+        \begin{align*}
+            h(2P) \ge 4h(P) - C_3 \text{    for all \(P \in E(\mathbb{Q})\)}
+        \end{align*}
+    First, choosing \(C_3\) to satisfy 
+        \begin{align*}
+            C_3 \ge 4 \max \{h(T): T \in E(\mathbb{Q}), 2T=\infty \}
+        \end{align*}    
+    we may assume that \(2P \ne \infty \). Note that the set in the right hand side is finite since \(2T = \infty \) if and only if the tangent line of \(E(\mathbb{Q})\) at \(T\) is parallel to the \(y\)-axis which can occur only at finitely many points. Then writing \(P = (x,y)\), we can compute the coordinates of \(2P\) using the group law, so we obtain
+        \begin{align*}
+            x(2P) = \frac{x^4 -2Ax^2 -8Bx + A^2}{4x^3+4Ax+4B}
+        \end{align*}
+    Now we introduce an additional variable to change the polynomials in the numerator and the denominator of the above formula into homogeneous polynomials. Consider 
+        \begin{align*}
+            &F(X,Z) = X^4 - 2AX^2Z^2-8BXZ^3+A^2Z^4 \\
+            &G(X,Z) = 4X^3Z +4AXZ^3 + 4BZ^4
+        \end{align*}
+    Luckily, letting \(x = a/b \) in a lowest forms, we have
+        \begin{align*}
+            x(2P) = \frac{F(a,b)}{G(a,b)}
+        \end{align*}
+    The key of our proof is that \(F(X,1)\) and \(G(X,1)\) are relatively prime polynomials in \(\mathbb{Q}[X]\). Indeed, we see that 
+        \begin{align*}
+            x(2P) = \frac{f'(x)^2 - (8x+4a)f(x)}{4f(x)}
+        \end{align*}
+    where \(f(x)=x^3+Ax+B\) and since elliptic curves are defined to be non-singular, \(f\) and \(f'\) have no common complex roots. So, \(F(X,Z)\) and \(G(X,Z)\) are relatively prime homogeneous polynomials in \(\mathbb{Z}[X,Z]\). Then, since the discriminant of the elliptic curve \(\Delta = 4A^3 +27B^2 \ne 0 \), we can find homogeneous polynomials \(f_1\), \(f_2\), \(g_1\), \(g_2\), satisfying 
+        \begin{align*}
+            &f_1(X,Z)F(X,Z)-g_1(X,Z)G(X,Z) = 4 \Delta Z^7 \\
+            &f_2(X,Z)F(X,Z)-g_2(X,Z)G(X,Z) = 4 \Delta X^7
+        \end{align*}
+    Now, plug in \((X,Z) = (a,b)\) and let \(\delta = \gcd (F(a,b),G(a,b)) \), then we see that \(\delta\) divides \(4\Delta\). Hence, 
+        \begin{align*}
+            H(x(2P)) \ge \frac{\max \{ \lvert F(a,b) \rvert, \lvert G(a,b) \rvert \} } {\lvert 4\Delta \rvert}
+        \end{align*}
+    We also have the following estimates from the above identities.
+        \begin{align*}
+            &\lvert 4\Delta b^7 \rvert \le 2 \max \{\lvert f_1(a,b) \rvert, \lvert g_1(a,b) \rvert \} \max \{ \lvert F(a,b) \rvert, \lvert G(a,b) \rvert\} \\
+            &\lvert 4\Delta a^7 \rvert \le 2 \max \{\lvert f_2(a,b) \rvert, \lvert g_2(a,b) \rvert \} \max \{ \lvert F(a,b) \rvert, \lvert G(a,b) \rvert\}
+        \end{align*}
+    On the other hand, using the Euclidean algorithm, one can find \(f_1\), \(f_2\), \(g_1\), \(g_2\) explicitly as follows
+        \begin{align*}
+            &f_1(X,Z) = 12 X^2Z+16AZ^3 \\
+            &g_1(X,Z) = 3X^3 - 5AXZ^2 - 27BZ^3 \\
+            &f_2(X,Z) = 4(4A^3+27B^2) X^3 - 4A^2BX^2Z +4A(3A^3+22B^2)XZ^2 + 12B(A^3 +8B^2)Z^3 \\
+            &g_2(X,Z) = A^2BX^2 +A(5A^3+32B^2)X^2Z + 2B(13A^63+96B^2)XZ^2 - 3A^2(A^3+8B^2)Z^3 
+        \end{align*}
+    From this, we have estimations
+        \begin{align*}
+            \max \{ \lvert f_1(a,b) \rvert, \lvert g_1(a,b) \rvert, \lvert f_2(a,b) \rvert, \lvert g_2(a,b) \rvert \} \le C \max \{ \lvert a \rvert ^3, \lvert b \rvert ^3 \}
+        \end{align*}
+    where \(C\) depends on \(A\) and \(B\). So, combining above results yields
+        \begin{align*}
+             \max\{ \lvert 4\Delta a^7 \rvert, \lvert 4 \Delta b^7 \rvert \} \le 2C \max \{ \lvert a \rvert^3, \lvert b \rvert^3 \} \max \{ \lvert F(a,b) \rvert, \lvert G(a,b) \rvert \}
+        \end{align*}
+    After cancellation,
+        \begin{align*}
+            H(x(2P)) \ge \frac{\max\{\lvert F(a,b) \rvert, \lvert G(a,b) \rvert \}}{\lvert 4 \Delta \rvert} \ge (2C)^{-1} \max \{ \lvert a \rvert ^4, \lvert b \rvert ^4\} = (2C)^{-1} H(x(P))^4
+        \end{align*}
+    Taking logarithms on both hand sides, we obtain the desired result.
+\end{proof}
+
+So our next step will be the proof of the weak Mordell-Weil theorem for \(m=2\): \(E(\mathbb{Q})/2E(\mathbb{Q})\) is finite, which completes the proof of the Mordell-Weil theorem.
+
+\begin{thebibliography}{}
+
+\bibitem{}
+ \href{https://www.springer.com/la/book/9780387094939}{Silverman, J. H.,
+ \emph{The Arithmetic of Elliptic Curves}. 2nd ed.,
+ Graduate Texts in Mathematics, vol. 106, Springer-Verlag, New York,~2009}
+\bibitem{}
+ \href{https://books.google.co.kr/books?id=2_PLCQAAQBAJ&printsec=frontcover&dq=Rational+Points+on+Elliptic+Curves&hl=ko&sa=X&ved=0ahUKEwiahcaz_ZDhAhWUxIsBHfEdBtUQ6AEIMTAB#v=onepage&q=Rational%20Points%20on%20Elliptic%20Curves&f=false}{Silverman, J. H., Tate, J. T.,
+ \emph{Rational Points on Elliptic Curves}. 2nd ed., Undergraduate Texts in Mathematics, Springer International Publishing, 2015}
+\end{thebibliography}
+
+\end{document}
