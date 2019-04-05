@@ -1,0 +1,127 @@
+\documentclass[11pt]{amsart}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{amssymb,amscd,amsthm,latexsym,verbatim}
+\usepackage{amssymb,amscd,amsthm,verbatim,syntonly}
+\usepackage{graphics}
+\usepackage{latexsym}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{cite}
+\usepackage{graphicx,subfigure}
+\usepackage{blkarray}
+\usepackage[left=3.6cm,right=3.6cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{indentfirst}
+\parindent=1em
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{f}{Fact}
+\newtheorem{theom}{Theorem}
+\newtheorem{claim}{claim}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{qe}[thm]{Question}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\theoremstyle{definition}
+\newtheorem{exmp}[thm]{Example} 
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{q}{Question}
+
+
+\newcommand{\redhom}{\tilde{H}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\sgn}{\operatorname{sgn}}
+
+\begin{document}
+
+\title[]
+{Elliptic functions and Elliptic integrals}
+\author{Dong Suk Kim}
+
+\maketitle
+\begin{abstract} 
+
+ In this article, we briefly browse the history of elliptic functions and addition theorem. 
+
+\end{abstract}
+
+
+\section{Addition Theorem}
+
+\begin{defn} An addtion theorem for a function $f$ is a formula expressing $f(u+v)$ in terms of $f(u)$ and $f(v)$.
+\end{defn}
+
+Here $f$ is an one variable function. 
+
+
+\vspace{2ex}
+
+\begin{exmp} For $F(x)$=$\int_{0}^{x} {1 \over \sqrt{1-u^{2}}}\, du$, 
+\begin{equation*} \int_{0}^{\sin(x)} {1 \over \sqrt{1-u^{2}}}\, du + \int_{0}^{\sin(y)} {1 \over \sqrt{1-u^{2}}}\, du = \int_{0}^{\sin(x+y)} {1 \over \sqrt{1-u^{2}}}\, du.
+\end{equation*}
+ \end{exmp}
+
+\vspace{2ex}
+
+\begin{exmp}[Euler's addition theorem] For
+$F(x)$=$\int_{0}^{x} {1 \over \sqrt{1-u^{4}}}\, du$, 
+\begin{equation*} \int_{0}^{x} {1 \over \sqrt{1-u^{4}}}\, du + \int_{0}^{y} {1 \over \sqrt{1-u^{4}}}\, du = \int_{0}^{ {x\sqrt{1-y^{4}}+y\sqrt{1-x^{4}} \over 1+x^{2}y^{2}} } {1 \over \sqrt{1-u^{4}}}\, du.
+\end{equation*} 
+If we set $f(s)=x, f(t)=y$, then
+\begin{equation*} \int_{0}^{f(s)} {1 \over \sqrt{1-u^{4}}}\, du + \int_{0}^{f(t)} {1 \over \sqrt{1-u^{4}}}\, du = \int_{0}^ {f(s+t)} {1 \over \sqrt{1-u^{4}}}\, du.
+\end{equation*} 
+
+Here $f$ is the inverse of $F$.
+In short, an addition theorem is related to the inverse functions of the antiderivative of a function.
+
+\end{exmp}
+
+\vspace{2ex}
+Note that the integral is an elliptic integral. Elliptic integral is $\int R(x,\sqrt{P(x)})\, dx$ where $R(x,y)$ is a rational function of two variables $x,y$ and $P(x)$ is a polynomial of degree 3 or 4. That such integrals cannot be evaluated in terms of the elementary functions was finally proved by Liouville.
+\newline 
+\indent Let 
+\begin{equation*}P(x)=a_0x^{2n-1}+a_1x^{2n-2}+...+a_{2n-1}
+\end{equation*}
+set $x=c+1/y$, where $c$ is not a root of $P(x)$. Then
+\begin{equation*} P(x)=P(c)+P'(c){1 \over y}+...+{P^{2n-1}(c) \over (2n-1)!}{1 \over y^{2n-1}}= {P_1(y) \over y^{2n}}.
+\end{equation*} 
+Then $P_1(x)$ has degree 2n. Thus $\int R(x,\sqrt{P(x)})\, dx$=$\int R_1(x,\sqrt{P_1(x)})\, dx$.
+\newline
+
+Legendre showed that integration of the elliptic integral of fourth degree, can be reduced to the integration of the three integrals,
+\begin{equation*} \int {1 \over \sqrt{1-u^{2}}\sqrt{1-l^{2}u^{2}}}\, du, \int {u^{2} \over \sqrt{1-u^{2}}\sqrt{1-l^{2}u^{2}}}\, du, \int {1 \over (u-a)\sqrt{1-u^{2}}\sqrt{1-l^{2}u^{2}}}\, du.
+\end{equation*}
+\newline
+Next, Weierstrass showed that 
+\begin{equation*} u(p)= \int_{0}^{p} {1 \over \sqrt{4t^{3}-g_2t-g_3}}\, dt,
+\end{equation*} where $g_2$ and $g_3$ are constants such that $g_2^{3}-27g_3^{2} \ne0$ is the fundamental elliptic function.
+the fundamentality means every elliptic function could be expressed in terms of $p(u)$ and $p'(u)$. It also related to the inverse function of the function defined by antiderivative.
+\newline
+\indent Abel generalized an addition theorem.
+\begin{thm} Let $\psi x$ =$\int {R(x,\sqrt{P(x)})}\, dx$. Let $n$ be positive integers, and $h_1,..,h_n$ rational numbers. Then there exist $g$ that
+\begin{equation*}  h_1\psi x_1+..+h_n\psi x_n = v+\psi x'_1+..+\psi x'_g
+\end{equation*} where $v$ is an elementary function of $x_1,..,x_n$ and $x'_1,..,x'_g$ are algebraic function of $x_1,..,x_n$ and $g$ is minimal : given algebraic functions $x'_1,..,x'_{g-1}$ of $x_1,..,x_g$, for any constant $v$, there exists $\psi x$ such that
+\begin{equation*} \psi x_1+..+\psi x_g \ne \psi x'_1+..+\psi x'_{g-1}+v
+\end{equation*}
+Here $\psi$ is another bounded integral made by $\sqrt{P(x)}$.
+\end{thm}
+
+\indent Next time We shall discuss what $g$ means.
+
+\begin{thebibliography}{30}
+\bibitem{OF}
+O.Forster, \emph{Lectures on Riemann Surfaces}. Springer-Verlag, New York, 1999.
+\bibitem{OR}
+Olav Afrnfinn Laudal, Ragni Piene \emph{The legacy of Niels Henrik Abel}. Springer-Verlag, New York, 2004
+\bibitem{BJ}
+Barrios, Jose \emph{A Brief History of Elliptic Integral Addition Theorems}. Ros-Hulman Undergraduate Mathematics Journal:Vol.10, 2009
+\bibitem{KM}
+Kline, Morris, \emph{Mathematical Thought from Ancient to Modern Times},vol. 2, Oxford University Press: New York, pages 421, 422, 646, 1990.
+\end{thebibliography}
+
+\end{document}
