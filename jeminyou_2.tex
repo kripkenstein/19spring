@@ -17,12 +17,18 @@
 
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[section]
+\newtheorem{prp}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+
+\theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
 \newtheorem{exm}[thm]{Example}
-\newtheorem{prp}[thm]{Proposition}
-\newtheorem{rem}[thm]{Remark}
-\newtheorem{lem}[thm]{Lemma}
 \newtheorem{nota}[thm]{Notation}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+
+
 
 \font\myfont=cmr12 at 20pt
 
@@ -47,7 +53,7 @@ We will explain the underlying concepts through examples.
 
 \section{Category of Elliptic Curves}
 \begin{defn}
-An $\textbf{elliptic curve}$ is a morphism of schemes $E\to$$S$ together with a section, where the morphism is proper smooth of dimension $1$ having geometric fibres(=fibres over algbraically closed fields) connected curves of genus $1$.
+An $\textit{elliptic curve}$ is a morphism of schemes $E\to$$S$ together with a section, where the morphism is proper smooth of dimension $1$ having geometric fibres(=fibres over algbraically closed fields) connected curves of genus $1$.
 \end{defn}
 
 \begin{exm}
@@ -59,19 +65,32 @@ given by the projection onto $j$-coordinates is an elliptic curve over $\mathbb{
 If we fix any $j\neq0,1728$, the fibre of the above morphism is a complex elliptic curve of that $j$-invariant value.
 \end{exm}
 
+\begin{exm}[Legendre family]\label{Leg}
+Another morphism of varieties
+\[
+\{([X_0:X_1:X_2],\lambda) \in \mathbb{P}_{k}^2\times (k\setminus\{ 0,1\}):X_2^2X_0=X_1(X_1-X_0)(X_1-\lambda X_0)\} \to \{\lambda\in k \setminus\{ 0,1\}\}
+\]
+given also by the projection is an elliptic curve for a (algebraically closed) field $k$.
+The $j$-invariant is given by
+\[
+j=2^8\frac{(\lambda^2-\lambda+1)^3}{\lambda^2(\lambda-1)^2}.
+\]
+This family can be defined for any schemes where $2$ is invertible, and is universal among them.
+\end{exm}
+
 So scheme-theoritic notion of elliptic curves is a generalized version of algebraically varying families of complex elliptic curves.
 This is how we formulate familiy of varying schemes with parameters.
 
 \begin{nota}
-We denote by $X/Y$ a morphism $X\to$$Y$ of schemes, and call $X$, or more precisely the morphism itself, a $\textbf{scheme over $Y$}$, or a $\textbf{$Y$-scheme}$.
+We denote by $X/Y$ a morphism $X\to$$Y$ of schemes, and call $X$, or more precisely the morphism itself, a $\textit{scheme over }Y$, or a $Y\textit{-scheme}$.
 Also, by scheme over a ring $A$ we mean a scheme over the spectrum $\textnormal{Spec}(A)$ of $A$, which is a geometric space(a local-ringed space) associated to $A$.
 \end{nota}
 
 \begin{defn}
 Let $A$ be a ring.
 The category $Ell/A$ of elliptic curves consist of the followings:\\
-$1)$The objects are elliptic curves $E\to$$S$ where $S$ is an $A$-scheme.\\
-$2)$The morphism set from an elliptic curve $F\to$$T$ to another $E\to$$S$ are Cartesian diagrams
+$(1)$The objects are elliptic curves $E\to$$S$ where $S$ is an $A$-scheme.\\
+$(2)$The morphism set from an elliptic curve $F\to$$T$ to another $E\to$$S$ are Cartesian diagrams
 \[
 \begin{tikzcd}
 F \arrow[r] \arrow[d] & E \arrow[d] \\
@@ -95,17 +114,17 @@ Thus a morphism of elliptic curves is a "mapping of continuous families of ellip
 
 \begin{defn}
 Let $\mathcal{C}$ be a category where the collections of morphisms between objects are sets("small").
-A $\textbf{moduli problem}$ on $\mathcal{C}$ is a contravariant functor,
+A $\textit{moduli problem}$ on $\mathcal{C}$ is a contravariant functor,
 \[
 \mathcal{P}:\mathcal{C}^{op} \to \textit{Sets}
 \]
 from the category $\mathcal{C}$ to the category of sets.
-We call this moduli problem $\mathcal{P}$ $\textbf{representable}$ if there exist an object $X$ of $\mathcal{C}$ such that
+We call this moduli problem $\mathcal{P}$ $\textit{representable}$ if there exist an object $X$ of $\mathcal{C}$ such that
 \[
 \mathcal{P} \simeq h_X
 \]
 where $h_X(Y):=\textnormal{Hom}_{\mathcal{C}}(Y,X)$ and $\simeq$ denoteds the isomorphism of functors("natural equivalences").
-The $X$ above is called the $\textbf{fine moduli space}$ of the moduli problem $\mathcal{P}$.
+The $X$ above is called the $\textit{fine moduli space}$ of the moduli problem $\mathcal{P}$.
 \end{defn}
 
 \begin{rem}
@@ -123,7 +142,7 @@ The functor
 \[
 \mathfrak{Gr}(k,V):S\to\{\textnormal{closed subschemes of }S\times\mathbb{P}(V)\textnormal{ that are flat over $S$ with linear $(k-1)$-dimensional fibres}\}
 \]
-($\textbf{flat}$=algebro-geometric version of continuously varying familiy, and dimension drops to $k-1$ since we are in the projective space) is represented by the complex Grassmannian
+($\textit{flat=algebro-geometric version of continuously varying familiy}$, and dimension drops to $k-1$ since we are in the projective space) is represented by the complex Grassmannian
 \[
 \textnormal{Gr}(k,V) = \{k\textnormal{-planes of }V\} \subseteq \mathbb{P}(\wedge^kV)
 \]
@@ -138,7 +157,6 @@ For example, studying one-parameter family of $k$-planes of $V$ is equivalent to
 
 \begin{thm}
 There exists a scheme-theoritic interpretation of $\Gamma$-structures where $\Gamma$ is one of $\Gamma_0(N)$, $\Gamma_1(N)$, $\Gamma(N)$s from the last week.
-%Dohyeong: Worth elaborating is the $\Gamma(2)$-structure and the Legendre family of elliptic curves. 
 These define moduli problems on $Ell$, of which we denote by $[\Gamma]$.
 Fix an elliptic curves $E\to$$S$.
 Then the moduli problem on $\textit{Sch}/S$
@@ -152,8 +170,25 @@ T \mapsto [\Gamma](E_T/T)
 The $\Gamma$-structures mentioned above over $\mathbb{C}$ are precisely the ones from the last week.
 \end{rem}
 
+\begin{exm}[Legendre moduli problem](cf.Example\ref{Leg})
+There is a moduli problem
+\[
+E/S \mapsto \textnormal{pairs } (\phi, \omega)
+\]
+where $\phi:(\mathbb{Z}/2\mathbb{Z})^2\to$ $E[2]$ is a $S$-group-scheme isomorphism, $\omega$ is a $S$-basis of $\omega_{E/S}$, an invertible sheaf canonically associated to $E/S$ with suitable adaptedness conditions.
+This is a representable moduli problem, and the Legendre family represents it when $2$ is invertible on $S$.
+
+Closely related is the $\Gamma[2]$-moduli problem.
+This associates $E/S$ with group homomorphisms
+\[
+\phi:(\mathbb{Z}/2\mathbb{Z})^2 \to E[2](S)
+\]
+such that the $4$ points mapped by $\phi$ form a "full set of sections", in the sense that they coincide with $E[2]$ as relative effective (Cartier) divisors of $E/S$.
+\end{exm}
+
+
 \begin{defn}
-A moduli problem $\mathcal{P}$ on $Ell/A$ is $\textbf{relatively representable}$ if the results of the theorem holds.
+A moduli problem $\mathcal{P}$ on $Ell/A$ is $\textit{relatively representable}$ if the results of the theorem holds.
 That is, for any elliptic curve $E/S$ over $A$, the functor on $\textit{Sch}/S$ given by
 \[
 T \mapsto \mathcal{P}(E_T/T)
@@ -168,64 +203,15 @@ Unfortunately, we cannot do this for all bases schemes $S$: the moduli problems 
 This is because schemes relatively representing $[\Gamma]$(in the above sense) have nontrivial automorphisms, in analogue to non-existence of a fine moduli space of complex elliptic curves due to a nontrivial automorphism $-1$ (or more for $j=0,1728$).
 
 Hence, the approach taken is to find the "best-approximating" schemes for the moduli problems $[\Gamma]$.
-These are called $\textbf{coarse moduli schemes}$.
+These are called $\textit{coarse moduli schemes}$.
 They correspond to the "$j$-line" $\mathbb{A}^1_{\mathbb{C}}=\mathbb{C}$ from the last week.
 Their geometric points(think them of complex points) correspond bijectively to $\Gamma$-structured elliptic curves.
-Then the coarse moduli schemes turn out to be finite over the "$j$-line" (over $\mathbb{Z}$) and can be $\textbf{compactified}$ via "adding the cusps $j=\infty$".
+Then the coarse moduli schemes turn out to be finite over the "$j$-line" (over $\mathbb{Z}$) and can be $\textit{compactified}$ via "adding the cusps $j=\infty$".
 This is what we've done last week when we compactified $\mathbb{A}^1_{\mathbb{C}}=\mathbb{C}$ to $\mathbb{C}\mathbb{P}^1$.
 
 Starting from next week, we will go through the study of the compactifications near the cusps.
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
