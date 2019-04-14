@@ -17,11 +17,18 @@
 
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[section]
+\newtheorem{prp}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+
+\theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
 \newtheorem{exm}[thm]{Example}
-\newtheorem{prp}[thm]{Proposition}
+\newtheorem{nota}[thm]{Notation}
+
+\theoremstyle{remark}
 \newtheorem{rem}[thm]{Remark}
-\newtheorem{lem}[thm]{Lemma}
+
+
 
 \font\myfont=cmr12 at 20pt
 
@@ -39,7 +46,7 @@ We follow Diamond and Shurman's book `A First Course on Modular Forms', Springer
 Elliptic curves are important geometric/arithmetic objects that gathered much interests of geometers and number theorists for a long time.
 There are various ways of studying elliptic curves and their structures.
 
-A particular way that we are to focus on is to study the $\textbf{moduli space}$ of elliptic curves(with some enhanced structures).
+A particular way that we are to focus on is to study the $\textit{moduli space}$ of elliptic curves(with some enhanced structures).
 In this note we study the complex analytic theory, which is equivalent to studying the theory over $\mathbb{C}$.
 
 We will clarify various concepts of moduli spaces and work through the theory of elliptic curves over arbitrary rings and more on later weeks.
@@ -47,7 +54,7 @@ We will clarify various concepts of moduli spaces and work through the theory of
 \section{Complex Elliptic Curves}
 
 \begin{defn}
-A \textbf{complex elliptic curve} is a pointed compact Riemann surface of genus 1.
+A \textit{complex elliptic curve} is a pointed compact Riemann surface of genus 1.
 \end{defn}
 
 It is well-known that an elliptic curve is isomorphic to a complex torus $\mathbb{C}/\Lambda$ where $\Lambda$ is a lattice of rank $2$.
@@ -79,11 +86,11 @@ j=\frac{1728g_2^3}{g_2^3-27g_3^2}.
 \]
 \end{thm}
 
-We call the space $\mathfrak{H}/\textnormal{SL}(2,\mathbb{Z})\simeq\mathbb{C}$ the $\textbf{moduli space}$ of elliptic curves for this reason.
+We call the space $\mathfrak{H}/\textnormal{SL}(2,\mathbb{Z})\simeq\mathbb{C}$ the $\textit{moduli space}$ of elliptic curves for this reason.
 
 \section{Compactifying the Moduli Space}
 
-One of the issues of the moduli space $\mathbb{C}$ is that it is not $\textbf{compact}$.
+One of the issues of the moduli space $\mathbb{C}$ is that it is not $\textit{compact}$.
 We will compactify $\mathbb{C}$ by adding cusps.
 
 \begin{defn}
@@ -116,7 +123,7 @@ This happens because some open sets of $\mathfrak{H}/\textnormal{SL}(2,\mathbb{Z
 
 \begin{defn}
 Let $X$ be a Riemann surface.
-A $\textbf{hole chart}$ is a chart $\phi:U$ $\to$ $V$ from an open subset of $X$'s to $\mathbb{C}$'s such that there exists a closed subset $C$ of $X$ contained in $U$ that is mapped to a punctured disk of $\mathbb{C}$ contained in $V$.
+A $\textit{hole chart}$ is a chart $\phi:U$ $\to$ $V$ from an open subset of $X$'s to $\mathbb{C}$'s such that there exists a closed subset $C$ of $X$ contained in $U$ that is mapped to a punctured disk of $\mathbb{C}$ contained in $V$.
 \end{defn}
 
 \begin{lem}
@@ -157,7 +164,7 @@ Fixing as isomorphism $E\simeq\mathbb{C}/\Lambda_{\tau}$, if $P$, $Q$ $\in$ $E[N
 \[
 e(P,Q):=e^{\frac{2\pi i(ad-bc)}{N}} \textnormal{ where } P=\frac{a+b\tau}{N}, Q=\frac{c+d\tau}{N}.
 \]
-This is a well-defined bilinear pairing on $E[N]$ called the $\textbf{Weil pairing}$.
+This is a well-defined bilinear pairing on $E[N]$ called the $\textit{Weil pairing}$.
 \end{defn}
 
 The Weil pairing is intrinsic to $E$, which is not a priori clear.
