@@ -1,0 +1,309 @@
+\documentclass[a4paper,11pt]{article}
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz-cd}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{titling}
+\usepackage[left=2cm,right=2cm,top=1cm,bottom=2cm,a4paper]{geometry}
+\usepackage{mathrsfs}
+\usepackage{calrsfs}
+
+
+
+\begin{document}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prp}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{exm}[thm]{Example}
+\newtheorem{nota}[thm]{Notation}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+
+
+
+\font\myfont=cmr12 at 20pt
+
+\title{\vspace{-5ex} \myfont Coarse Moduli Schemes \& Cusps}
+\author{Jemin You}
+\date{\vspace{-5ex}}
+\maketitle
+
+\setcounter{section}{-1}
+
+We continue to follow Katz and Mazur, `Arithmetic Moduli of Elliptic Curves'.
+We discuss coarse moduli schemes, the $j$-line and define the scheme of cusps.
+
+\section{Brief Recall \& Geometric Properties of Moduli Problems}
+
+Let $A$ be a ring.
+Recall:
+
+\begin{defn}
+A moduli problem $\mathcal{P}$ on $Ell/A$ is $\textit{relatively representable}$ if for every elliptic curve $E/S$ over $A$ the moduli problem
+\[
+(Sch/S)^{\textnormal{op}} \to Sets, T \mapsto \mathcal{P}(E_T/T)
+\]
+is representable by a $S$-scheme, of which we denote by $\mathcal{P}_{E/S}$.
+
+\end{defn}
+
+All moduli problems on $Ell/A$ throughout this notes is assumed to be relatively representable.
+Moduli problems on $Ell/A$ is considered a geometric object in more general context, and we can talk about geometric properties of them.
+
+\begin{defn}
+Let $\mathcal{P}$ be a relatively representable moduli problem on $Ell/A$.
+
+(1) Let $Q$ be a property of morphism of schemes.
+We say that $\mathcal{P}$ has property $Q$ if for every elliptic curve $E/S$ over $A$ ther morphism $\mathcal{P}_{E/S}\to$$S$ has property $Q$.
+
+(2) Let $\textbf{E}/\mathfrak{M}$ be an elliptic curve over $A$.
+We say that it is a $\textit{modular elliptic curve}$ over $A$ if the moduli problem it represents(=$\textnormal{Hom}_{Ell/A}(-,\textbf{E}/\mathfrak{M}$) is etale as a relatively representable moduli problem in the sense of (1).
+
+(3) Let $R$ be a property of schemes local to the etale topology.
+We say that $\mathcal{P}$ has property $R$ if for every modular elliptic curve $\textbf{E}/\mathfrak{M}$ over $A$ the scheme $\mathcal{P}_{\textbf{E}/\mathfrak{M}}$ has the property $R$.
+\end{defn}
+
+Here, $\textit{etale morphisms}$ of schemes are `analytically isomorphic finite coverings over an open set', and etale topology takes $\textit{etale morphisms as open neighbourhoods}$ instead of genuine Zariski open sets.
+Modular elliptic curves thus can be thought of families of elliptic curves that has minimal autoomorphisms.
+
+\begin{exm}\label{a}
+(0) Possible candidates for $Q$ include $\textit{flat}$, $\textit{affine}$, $\textit{finite}$, etc.
+Possible candidates for $R$ include $\textit{normal}$, $\textit{smooth over }\mathbb{Z}$, $\textit{regular of dimension }n$, etc.
+
+(1) The moduli problems $[\Gamma]$ where $\Gamma$ is one of the groups $\Gamma(N)$, $\Gamma_1(N)$ or $\Gamma_0(N)$ from before are finite, flat((1) of the above) and regular of dimension $2$((3) of the above), as stated in the previous notes.
+
+(2) The Legendre moduli problem(cf.previous notes) is etale.
+\end{exm}
+
+Hence we can talk geometrically of moduli problems on $Ell/A$, which is dealing systematically with structured elliptic curves varying in families.
+
+\section{Compactification via Normalization at $j=\infty$}
+
+\subsection{Coarse Moduli Schemes \& the $j$-line}
+
+To any affine relatively representable moduli problem $\mathcal{P}$ on $Ell/A$, we always get a $\textit{coarse moduli scheme}$ $M(\mathcal{P})$ over $A$.
+We will not define what it is here, but it should be thought of an $A$-scheme that is the `best replacement' of a non-representable moduli problems.
+When the moduli problem is actually representable, it coincides with the base scheme of the representing elliptic curve.
+
+One advantage of talking geometrically of moduli problems as done in the last section is that such language `descends down' to coarse moduli schemes.
+For exmaple,
+\[
+\textnormal{If } \mathcal{P} \textnormal{ is normal, then so is } M(\mathcal{P}).
+\]
+
+\begin{rem}\label{b}
+Since regular local rings are integrally closed, $[\Gamma]$ all are normal(cf. Example \ref{a}(1)).
+\end{rem}
+
+The phrasing `best replacement' can be slightly unambiguized by this result.
+
+\begin{prp}
+Let $\mathcal{P}$ be an affine relatively representable moduli problem on $Ell/A$, and let $k$ be an algebraically closed field.
+Then there exists bijective identification
+\[
+M(\mathcal{P})(k) = k\textnormal{-isomorphism classes of } "elliptic \enskip curves \enskip E/k \enskip with \enskip \mathcal{P}\textnormal{-}structure".
+\]
+\end{prp}
+
+Which implies that the coarse moduli schemes indeed bijectively encode the structured elliptic curves.
+The failure of being representability comes from existence of nontrivial automorphism, as noted many times by now, therefore the structure being `not rich enough`.
+
+\begin{exm}\label{c}
+(1) Let $A=\mathbb{C}$ and consider the moduli problems $[\Gamma]$s over $\mathbb{C}$.
+Then the coarse moduli schemes are the nonproper algebraic curves over $\mathbb{C}$,
+\[
+M([\Gamma])=Y(\Gamma)=\mathfrak{H}/\Gamma,
+\]
+i.e. the quotient of the complex upper-half plane by the congruence subgroup $\Gamma$ of $\textnormal{SL}(2,\mathbb{Z})$.
+
+(2)Let $A$ be a $\mathbb{C}$-algebra.
+Then the coarse moduli schemes for $[\Gamma]$ are the nonproper curves over $A$,
+\[
+Y(\Gamma) \otimes_\mathbb{C} A.
+\]
+
+\end{exm}
+
+The simplest moduli problem we can consider is the problem $[\Gamma(1)]$.
+It is the moduli problem sending each elliptic curve to the singleton set, which is the final object in the category of sets.
+Therefore, if this was to be representable, it should be represented by a final object of $Ell/A$, which doesn't exist.
+However, the situation is similar to the situation where we considered complex elliptic curves, where there was no fine moduli space but had the $j$-line $\mathbb{C}=\textnormal{Spec }\mathbb{C}[j]$ as coarse moduli space.
+This translates analogously into general situations, giving
+\[
+\textnormal{the "}j \textnormal{"-line } \mathbb{A}^1_A=\textnormal{Spec }A[j]
+\]
+as the coarse moduli scheme for $[\Gamma(1)]$.
+
+Being a final object of moduli problems, $[\Gamma(1)]$ admits a unique morphism(=a natural transformation) into itself from any moduli problem $\mathcal{P}$.
+If $\mathcal{P}$ was affine, this gives a morphism
+\[
+M(\mathcal{P}) \to \textnormal{Spec }A[j]
+\]
+which should be thought of "sending the elliptic curves that a $\mathcal{P}$-structure was endowed to its $j$-value".
+
+\begin{exm}[Recap of Example \ref{c}]
+(1)The $\mathbb{C}$-morphism of coarse moduli schemes
+\[
+Y(\Gamma) \to \textnormal{Spec}\mathbb{C}[j]
+\]
+on closed points(ordinary points of the Riemann surfaces) is the forgetful map
+\[
+(E,\alpha \in \Gamma(E/\mathbb{C})) \mapsto j(E) \in \mathbb{C}
+\]
+($\alpha=\Gamma-$structure on E).
+
+(2)If we take $A=\mathbb{C}[x,y]$, and consider the same map, we get
+\[
+Y(\Gamma) \otimes_{\mathbb{C}} \mathbb{C}[x,y] \to \textnormal{Spec }\mathbb{C}[x,y][j].
+\]
+Taking an $A$-section from the left gives us a family of two-parameter family of $\Gamma$-structured complex elliptic curves parametrized by $x$ and $y$.
+Then the corresponding $A$-section obtained for the left side gives $j\in\mathbb{C}[x,y]$, a polynomial in $x$ and $y$, which outputs the $j$-value of the complex elliptic curve corresponding to chosen values $x_0$ and $y_0$ for each $(x_0,y_0)\in\mathbb{C}^2$.
+
+\end{exm}
+
+\subsection{Compactification of Coarse Moduli Schemes}
+
+Let $A$ be an $\textit{excellent}$(=for e.g., rings of finite type over $\mathbb{Z}$ or a field) regular noetherian ring, and let a moduli problem $\mathcal{P}$ on $Ell/A$ satisfy the conditions
+
+\begin{flushleft}
+C1. $\mathcal{P}$ is relatively representable and finite over $Ell/A$.\\
+C2. $M(\mathcal{P})$ is normal near $\infty$ in the sense that there exists a monic polynomial $f\in$$A[j]$ such that\\ $M(\mathcal{P})$ is normal over the locus where $f$ is invertible.
+\end{flushleft}
+
+\begin{rem}
+Our moduli problems $[\Gamma]$ from above all satisfy these assumptions(cf.$\textit{Remark}$ \ref{b}).
+\end{rem}
+
+Then there exists a unique scheme $\overline{M}(\mathcal{P})$ that is $\textit{finite}$ over $\mathbb{P}^1_A$ extending $M(\mathcal{P})$ that is normal over the locus $f\neq0$.
+It is the unique extension of $M(\mathcal{P})$ that is normal near $\infty$.
+We consider that we've `added' the cusps over $\infty$.
+
+\begin{defn}
+The $\textit{scheme of cusps}$ of the moduli problem $\mathcal{P}$ satisfying the conditions C1. and C2. is defined to be the reduced scheme
+\[
+Cusps(\mathcal{P}) := (j^{-1}(\infty)))^{\textnormal{red}}.
+\]
+This is the reduced induced closed subscheme supported over $\infty$.
+We denote the $\textit{formal completion}$ of $\overline{M}(\mathcal{P})$ along $Cusps(\mathcal{P})$ by
+\[
+\widehat{Cusps}(\mathcal{P}).
+\]
+\end{defn}
+
+These are the analogues of the cusps that appeared in class in the general scheme-theoritic settings.
+We haven't defined what $\textit{formal completion}$ is.
+Intuitively, this is thought of `infinitesimal neighbourhood' of the closed subscheme; locally, the formal completion is the completion of a ring $R$ with respect to the $I$-adic topology generated by an ideal $I$:
+\[
+\widehat{R}:=\underleftarrow{ \vspace{0.4ex} \textnormal{lim}}R/I^n.
+\]
+An easy example can be given: the formal completion of the polynomial ring $\mathbb{C}[x_1,x_2,\cdots,x_n]$ in $n$ variables along the ideal $(x_1,x_2,\cdots,x_n)$ is $\mathbb{C}[[x_1,x_2,\cdots,x_n]]$, the ring of formal power series in $n$ variables.
+This contains the ring of germ of holomorphic functions at $0$, which corresponds to the ideal above.
+Therefore, what being done here can be roughly thought of considering `holomorphic neighbourhoods' of cusps.
+
+\begin{exm}[Taken from `97 paper of Hibino and Murayabashi]
+Let $A=\mathbb{C}$.
+Then the compactified coarse moduli scheme is $X(\Gamma)$.
+For explicit calculations, let $\Gamma=\Gamma_0(37)$.
+Then there are $2$ cusps:
+\[
+\frac{a}{c}=\frac{0}{1},\frac{1}{0}.
+\]
+and one can calculate:
+\[
+X_0(37)=\overline{\{ y^2=1+14x+35x^2+48x^3+35x^4+14x^5+x^6\}} \subseteq \mathbb{CP}^2.
+\]
+Moreover, the $j$-invariant is expressed in the form
+\[
+j=(A(x)-B(x)y)/2x^{37}
+\]
+where $A$, $B$ are monic polynomial with constant term $1$ of degree $38$, $35$ respectively, i.e.,
+\[
+X_0(37) \ni (x,y) \mapsto [2x^37:A(x)-B(x)y] \in \mathbb{CP}^1
+\]
+is the map into the $j$-line, and the cusps are exactly
+\[
+(0,\pm1)
+\]
+two of them, as expected(not sure which is $0$ and which is $\infty$).
+Hence the scheme $Cusps([\Gamma_0(37)])$ is a reduced two-point scheme over $\mathbb{C}$.
+In this case taking formal completion seems inefficient, since we already understand the cusp itself.
+\end{exm}
+
+
+Next week, we will discuss the $\textit{Tate curve}$, which is an elliptic curve over the ring of finite-tailed Laurent series with integer coefficients.
+For relatively representable moduli problems satisfying certain conditions($[\Gamma]$s do satisfy these), it will be stated that the computations of $\widehat{Cusps}(\mathcal{P})$ is essentially computation of the relative representative over the Tate curve(=$\mathcal{P}_{(\textnormal{Tate Curve over }A)}$).
+
+On the last weeks, we will then actually go through an explicit computation for a moduli problem.
+However, the computations that will be done will be radically general, in contrast to previous examples all done over $\mathbb{C}$.
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
