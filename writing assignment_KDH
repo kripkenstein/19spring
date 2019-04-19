@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{kotex}
+
+\renewcommand{\baselinestretch}{1.5}
+\setlength{\oddsidemargin}{.5in}
+\setlength{\evensidemargin}{1.5pt}
+
+\usepackage{amsmath,amssymb,amsthm} %\usepackage{amscd}
+\usepackage{latexsym}
+\usepackage{fancyhdr}
+\usepackage{float,srcltx,epsfig}%for .eps file
+\usepackage{multirow}
+\usepackage{enumerate}
+\usepackage{mathrsfs}
+\usepackage{algorithm}
+\usepackage{amsfonts}
+\makeindex %
+\newenvironment{explain}{\begin{quote}}{\hfill $\square$\end{quote}}
+\newenvironment{glos}[1]{\begin{quote}$\quad$\textbf{#1}\\}{\end{quote}}
+\newenvironment{problem}[1]{\begin{quote}$\quad$\textbf{#1}\\}{\end{quote}}
+\newenvironment{theorem}[1]{\begin{quote}$\quad$\textbf{#1}\\}{\end{quote}}
+
+
+\newcommand{\myindex}[1]{#1\index{#1}}
+\newcommand{\mi}[1]{#1\index{#1}}
+\newcommand{\SK}{\hspace{0.3cm}}
+
+%\newcommand{\Z}{{\mathbb Z}} 
+%\newcommand{\Q}{{\mathbb Q}}
+%\newcommand{\F}{{\mathbb F}}
+%\newcommand{\R}{{\mathbb R}}
+%\newcommand{\C}{{\mathbb C}}
+
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+\newcommand{\ord}{{\operatorname{ord }}}
+\newcommand{\ind}{{\operatorname{ind }}}
+\newcommand{\rank}{{\operatorname{Rank}}}
+
+\pagestyle{myheadings}   %
+\pagestyle{fancyplain}
+\fancyhf{}% clear all fields
+%\fancyhead[LE,RO]{\bfseries\thepage}
+%\fancyhead[LO]{\bfseries\tiny\rightmark}
+%\fancyfoot[RO]{\textsf{\small{Copyright \copyright 2018 Jung Hee Cheon.}}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\def\BigRoman{\uppercase\expandafter{\romannumeral\number\count 255 }}
+\def\Romannumeral{\afterassignment\BigRoman\count255=}
+\title{Brauer groups}
+\author{Donghyun Kim }
+\date{April 2019}
+
+\begin{document}
+
+\maketitle
+Profinite group is an inverse limit of finite groups.
+
+I will define the cohomology of profinite group and Brauer group.
+
+\section{discrete G-modules}
+Let G be a profinite group and A a left G-module. And U is an open subgroup of G.
+
+$A^{U}$ is the set of all fixed elements in A under U.
+
+When $A = \cup{A^{U}}$, we call A discrete G-modules.
+
+Following three conditions are equivalent.
+
+(i) A is a discrete G-module
+(ii)the stabilizer in G of every module elements is an open subroup of G
+(iii) the pairing $G\times A \rightarrow A$ is continuous (A is viewed as a discrete space.)
+
+The proof is easy and just use elementary topology.
+
+\section{defitition of restriction and inflation map}
+Since cohomology group is a contravariant functor about group, injection $G \rightarrow G'$ induces 
+a homomorphism $H^{a}(G,A) \rightarrow H^{q}(G',A)$ for any G-module A.
+
+it is called the restriction homomorphism.
+
+If H is a normal subgroup, $A^{H}$ is a G/H-module. 
+
+Because cohomology group is a contravariant functor about group and covariant fuctor about G-mocule,
+
+We can induce maps $H^{q}(G/H,A^{H}) \rightarrow H^{q}(G,A^{H})$ and $H^{q}(G,A^{H}) \rightarrow H^{q}(G,A)$
+
+Composing these two maps give us a inflation map $H^{q}(G/H,A^{H}) \rightarrow H^{q}(H,A)$
+
+We can show that 
+\section{cohomology of profinite group}
+
+
+\end{document}
