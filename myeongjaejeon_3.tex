@@ -1,0 +1,200 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amscd, amsthm, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\marginparwidth 40pt
+\marginparsep 10pt
+\topmargin -20pt
+\headsep 10pt
+\textheight 8.7in
+\textwidth 6.65in
+\linespread{1.2}
+
+\title{On a particular case of the Weak Mordell-Weil Theorem}
+\author{Myeong Jae Jeon}
+\date{}
+
+
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage[normalem]{ulem}
+\usepackage{enumerate}
+\usepackage[utf8]{inputenc}
+\usepackage[top=1 in,bottom=1in, left=1 in, right=1 in]{geometry}
+\usepackage{blindtext}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage{romannum}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+
+\urlstyle{same}
+\newcommand{\matlab}{{\sc Matlab} }
+\newcommand{\cvec}[1]{{\mathbf #1}}
+\newcommand{\rvec}[1]{\vec{\mathbf #1}}
+\newcommand{\ihat}{\hat{\textbf{\i}}}
+\newcommand{\jhat}{\hat{\textbf{\j}}}
+\newcommand{\khat}{\hat{\textbf{k}}}
+\newcommand{\minor}{{\rm minor}}
+\newcommand{\trace}{{\rm trace}}
+\newcommand{\spn}{{\rm Span}}
+\newcommand{\rem}{{\rm rem}}
+\newcommand{\ran}{{\rm range}}
+\newcommand{\range}{{\rm range}}
+\newcommand{\mdiv}{{\rm div}}
+\newcommand{\proj}{{\rm proj}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\attn}[1]{\textbf{#1}}
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{main}{Main Theorem}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{ex}[thm]{Example}
+\newtheorem*{note}{Note}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{exercise}{Exercise}
+\theoremstyle{definition}
+\newtheorem*{Rule}{Rule}
+\newcommand{\bproof}{\bigskip {\bf Proof. }}
+\newcommand{\eproof}{\hfill\qedsymbol}
+\newcommand{\Disp}{\displaystyle}
+\newcommand{\qe}{\hfill\(\bigtriangledown\)}
+\setlength{\columnseprule}{1 pt}
+
+\newcommand{\rr}{\mathbb{R}}
+
+\newcommand{\al}{\alpha}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\aff}{aff}
+
+\def\mathLarge#1{\mbox{\LARGE $#1$}}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+ The weak Mordell-Weil theorem states that for any number field \(K \) and integer \(m\), \(mE(K)\) has a finite index in \(E(K)\). By the descent theorem, combining with the existence of a height function on \(E(K)\), the weak Mordell-Weil theorem implies the Mordell-Weil theorem. We prove a particular case of the weak Mordell-Weil theorem: \(K=\mathbb{Q}\) and \(m=2\). Nonetheless, we obtain a proof of the Mordell-Weil theorem for an elliptic curve over a rational field which is important enough for its own sake.
+\end{abstract}
+
+\section{A Useful Homomorphism} \label{section-H}
+
+    Let \( \Gamma = E(\mathbb{Q})\) given by the equation \(y^2 = x^3 + ax + b\) with integer coefficients be our elliptic curve. To avoid using some algebraic number theory, for example, some basic facts about the unit group and the ideal class group, we set an assumption that \(f(x) = 0 \) has at least one rational root \(x_0\). Without losing of generality, we may assume that \(x_0 = 0\). So our elliptic curve is of the form
+        \begin{align*}
+                C: y^2 = f(x) = x^3 + ax         
+        \end{align*}
+    Then \(a\) must be nonzero since the discriminant \( \Delta = 4a^3 + 27b^2 \) should be nonzero. For simplicity, denote \( T = (0,0) \). Note that \(2T = \infty \) where \( \infty \) is the infinity point on \( C \). 
+    
+    Since we are interested in the factor group \( \Gamma / 2 \Gamma\), we look into the addition map \( P \mapsto 2P \). One can think of this map as a map of degree four in some sense since the \(x\)-coordinate of \(2P\) is given by the rational function of degree four in the \(x\)-coordinate of \(P\). We will express this map as a composition of two degree two maps. It is not clear what the degree of a map means but you may agree with this term soon. What is interesting here is that we factor the multiplication by two map on \( C \) through another curve \( \overline{C} \).
+    
+    The other curve \( \overline{C} \) is given by the equation
+        \begin{align*}
+            \overline{C}: y^2 = x^3 + \bar{a}x, \quad \bar{a} = -4a
+        \end{align*}
+    
+    We may also consider another curve given by
+        \begin{align*}
+            \overline{\overline{C}}: y^2 = x^3 + \bar{\bar{a}}x, \quad \bar{\bar{a}} = -4 \bar{a} = 16a
+        \end{align*}
+    
+    An interesting fact is that the curve \(\overline{\overline{C}}\) is isomorphic the curve \(C\) via the map \( (x,y) \rightarrow ( \frac{1}{4}x, \frac{1}{8}y ) \). Applying group laws on both curves, one can see that this map is indeed a group isomorphism. Now we define two homomorphisms between two curves \(C\) and \(\overline{C}\). 
+    \begin{thm}Define \(\phi: C \rightarrow \overline{C}\) by 
+        \begin{align*}
+         \phi(P) = 
+            \begin{cases}
+                \displaystyle \Big( \frac{y^2}{x^2}, \frac{y(x^2-a)}{x^2} \Big),  \; & \text{if} \; P = (x,y) \ne T, \infty, \\
+                \overline{\infty} \; & \text{if} \; P=\infty \; \text{or} \; P=T \\ 
+                \end{cases}
+        \end{align*}
+    (a) \(\phi\) is a homomorphism with kernel \( \{ \infty, T\} \) \\
+    (b) Applying the same process to \(\overline{C}\) gives a map \(\overline{\phi} : \overlinc{C} \rightarrow \overline{\overline{C}}\). Compositing this map with the isomorphism \(\overline{\overline{C}} \rightarrow C\) gives a homomorphism \(\psi: \overline{C} \rightarrow C \) with kernel \(\{\overline{\infty}, T\}\). \\
+    (c) \( \psi \circ \phi: C \rightarrow C \) and \( \phi \circ \psi: \overline{C} \rightarrow \overline{C} \) are the multiplication by two map.
+    \end{thm}
+    The proof is tedious applications of group laws on elliptic curves into several cases. Now we are ready to prove the weak Mordell-Weil theorem.
+
+\section{The Weak Mordell-Weil Theorem} \label{section-W}
+    Our proof is based on the following lemma on abelian groups.
+    \begin{lemma} Let \(A\) and \(B\) be abelian groups, and suppose that \( \phi: A \rightarrow B \) and     \( \psi: B \rightarrow A \) are homomorphisms satisfying 
+        \begin{align*}
+            \psi \circ \phi (a) = 2a \; \text{ for all } a \in A \quad \phi \circ \psi (b) = 2b \; \text{ for all } b \in B. 
+        \end{align*}
+    Then the following inequality on indices holds.
+        \begin{align*}
+            [A:2A] \le [A:\psi(B)][B:\phi(A)]
+        \end{align*}
+    \end{lemma}
+    \begin{proof}
+        Let \(\{a_i\}\) and \(\{b_j\}\) be complete representatives for the cosets of \(\psi(B)\) in A and the cosets of \(\phi(A)\) in B. We claim that \(\{ a_i + \psi(b_j) \} \) is the set of complete representatives for the cosets of \(2A\) in \(A\). Let \(a \in A \). Then we can let \(a = a_i + \psi(b) \) for some \(i\) and \(b \in B \). On the other hand, \( b = b_j + \phi(a`) \) for some \(j\) and \(a' \in A \). Then
+        \begin{align*}
+            a &= a_i + \psi(b) \\
+              &= a_i + \psi( b_j + \phi (a')) \\
+              &= a_i + \psi( b_j) + (\psi \circ \phi )(a')\\
+              &= a_i + \psi(b_j) + 2a'
+        \end{align*}
+        which gives the desired result.
+    \end{proof}
+    Since we are interested in proving finiteness of \( [\Gamma, 2\Gamma ]\), lemma 2.1. allows us to reduce the problem to proving finiteness of \( [\Gamma: \psi(\overline{\Gamma})] \) and \( [\overline{\Gamma}, \phi(\Gamma) ] \).  Since there is a symmetry between constructions of \( \phi \) and \( \psi \), it is enough to prove finiteness of \( [\overline{\Gamma}: \phi(\Gamma)] \). The idea of the proof is embedding \( \overline\Gamma / \phi(\Gamma)\) into a finite group. So we should look into the set \( \phi(\Gamma) \). Note that \( \phi \) sends a rational point on \(C\) to a rational point on \(\overline{C}\). So \( \phi(\Gamma) \) forms a subgroup of \(\overline{\Gamma} \). Then several facts are obtained as follows.\\
+    (1) \( \overline{\infty} \in \phi(\Gamma) \). \\
+    (2) \( \overline{T} = (0,0) \in \phi(\Gamma)\) if and only if \( \bar{a} = -4a \) is a square. \\
+    (3) If \( \overline{P} = (\bar{x},\bar{y}) \in \overline{\Gamma}\) with \(\bar{x} \ne 0\), then \( \overline{P} \in \phi(\Gamma)\) if and only if \( \bar{x} \) is a rational square. 
+
+    (1) is obvious from the definition of \(\phi\). Let's see (2). Note that \( \overline{T} \in \phi(\Gamma)\) if and only if \(\Gamma\) has a point with the \(y\)-coordinate 0. It is equivalent to the existence of a nonzero rational root of the equation \( 0 = x^3 + ax \). It can happen if and only if \( -4a \) is a square. For statement (3), only if part is immediate from the definition of \(\phi\). For the if part, let \( \bar{x} = w^2 \) with \( \w \in \mathbb{Q} \). Note that \(\phi \) has two elements in its kernel so that if the statement is true, we would find two points in the fibre of \(\overline{P}\). Let 
+    \begin{align*}
+        &x_1 = \frac{1}{2} \Big( w^2  + \frac{\bar{y}}{w} \Big), \quad y_1 = x_1w, \\
+        &x_2 = \frac{1}{2} \Big( w^2  - \frac{\bar{y}}{w} \Big), \quad y_2 = -x_2w,
+    \end{align*}
+    Then we can check that the fibre of \(\overline{P} \) consists of \( (x_1,y_1)\) and \((x_2,y_2)\). In summary, \( \phi(\Gamma) \) is the set consisting of \( (\bar{x}, \bar{y}) \in \overline{\Gamma}\) such that \(\bar{x}\) is a non-zero rational square, together with \(\overline{\infty}\), and \(\overline{T}\) if \(\bar{a}\) is a square. Now we will construct a homomorphism from \(\overline{\Gamma}\) to a finite group whose kernel fits into the description above.. Let \(\mathbb{Q}^{\ast2} \) be the set of rational squares. Define \( \alpha : \overline{\Gamma} \rightarrow \mathbb{Q}/\mathbb{Q}^{\ast2}\) by
+    \begin{align*}
+        &\alpha(\overline{\infty}) = 1  \quad \text{(mod \(\mathbb{Q}^{\ast2}\))}\\
+        &\alpha(\overline{T}) = \bar{a}  \quad \text{(mod \(\mathbb{Q}^{\ast2}\))}\\
+        &\alpha(\bar{x},\bar{y}) = \bar{x} \quad \text{(mod \(\mathbb{Q}^{\ast2})\) if \(x \ne 0 \)} 
+    \end{align*}
+    \begin{thm} The map \(\alpha\) is a homomorphism with the kernel \(\phi({\Gamma})\). Moreover, let \(p_1, \dots p_n \) be prime factors of \(\bar{a}\). Then the image of \(\alpha\) is contained in the subgroup
+        \begin{align*}
+            H = \{ \pm p_1^{\epsilon_1} \dots p_n^{\epsilon_n} : \text{each \( \epsilon_i \) is \(0\) or \(1\)} \}
+        \end{align*}
+     of \(\mathbb{Q}/\mathbb{Q}^{\ast2}\). Hence, \(\overline{\Gamma}/\phi(\Gamma)\) can be embedded to \(H\) and \([ \overline{\Gamma} : \phi(\Gamma) ]\) is finite.
+    \end{thm}
+    \begin{proof}
+        First, observe that \(\alpha\) sends inverses to inverses. Hence, to show \(\alpha\) is a homomorphism, it is enough to show that whenever \(\overline{P_1} + \overline{P_2} + \overline{P_3} = \overline{\infty} \), then \(\alpha(\overline{P_1}) \alpha(\overline{P_2}) \alpha(\overline{P_3} ) \equiv 1\) mod \( \mathbb{Q}^{\ast2}\). It is easy to see that it is true if one of \(\overline{P_1}
+        \), \(\overline{P_2}\), \(\overline{P_3}\) is \(\overline{\infty}\) or \(\overline{T}\). If not, the sum of three points is equivalent to the point of infinity if and only if they are colinear. Letting this line \( y = \lambda x + \nu \), we obtain the desired result by solving defining equation of an elliptic curve. Considering the definition of \(\alpha\), our description of \(\phi(\Gamma)\) exactly coincides with the kernel of \(\alpha\). Now let \((\bar{x}, \bar{y}) \in \overline{\Gamma}\). We have seen that \( \bar{x} = m/e^2 \) and \( \bar{y} = n/e^3 \) in reduced forms. Using the equation of \(\overline{\Gamma}\), we see that 
+        \begin{align*}
+            n^2 = m(m^2 + ame^2 + be^4)
+        \end{align*}
+        Note that image of \(\alpha\) consists of those \(\bar{x} \equiv m\) mod \(\mathbb{Q}^{\ast2}\), \(1\), and \(\bar{a}\). \(1\) and \(\bar{a}\) are obviously in \(H\). For \(m\), we see its prime factors. From the above equality, if prime factors of \(m\) appears even times in a factorization of \(m\) unless it divides \(b\). Therefore, factorization of \(m\) is of the form
+        \begin{align*}
+            m = \pm (\text{integer})^2 p_1^{\epsilon_1} \dots p_n^{\epsilon_n}
+        \end{align*}
+        with \(\epsilon_i\) is either \(0 \) or \(1\). So \(m \in H \) in \(\mathbb{Q}/\mathbb{Q}^{\ast2}\). Finally, since \(H\) consists of at most \(2^{n+1}\) elements, the last statement follows.
+    \end{proof}
+    
+    
+    
+\begin{thebibliography}{}
+
+\bibitem{}
+ \href{https://www.springer.com/la/book/9780387094939}{Silverman, J. H.,
+ \emph{The Arithmetic of Elliptic Curves}. 2nd ed.,
+ Graduate Texts in Mathematics, vol. 106, Springer-Verlag, New York,~2009}
+\bibitem{}
+ \href{https://books.google.co.kr/books?id=2_PLCQAAQBAJ&printsec=frontcover&dq=Rational+Points+on+Elliptic+Curves&hl=ko&sa=X&ved=0ahUKEwiahcaz_ZDhAhWUxIsBHfEdBtUQ6AEIMTAB#v=onepage&q=Rational%20Points%20on%20Elliptic%20Curves&f=false}{Silverman, J. H., Tate, J. T.,
+ \emph{Rational Points on Elliptic Curves}. 2nd ed., Undergraduate Texts in Mathematics, Springer International Publishing, 2015}
+\end{thebibliography}
+
+\end{document}
