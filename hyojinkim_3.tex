@@ -1,0 +1,110 @@
+\documentclass[11pt,a4paper,reqno]{amsart} 
+\usepackage{amsmath,amscd,amssymb,latexsym} 
+\usepackage{longtable} 
+
+\numberwithin{equation}{section} 
+
+\def\baselinestretch{1.2} 
+
+\newtheorem*{main}{Main Theorem} 
+\newtheorem{thm}{Theorem}[section] 
+\newtheorem{lem}[thm]{Lemma} 
+\newtheorem{prop}[thm]{Proposition} 
+\newtheorem{defn}[thm]{Definition} 
+\newtheorem{cor}[thm]{Corollary} 
+\newtheorem{ex}[thm]{Example} 
+\newtheorem{rmk}[thm]{Remark} 
+
+\pagestyle{plain} 
+
+\newenvironment{pf}{{\noindent \bf Proof:\ }}{\hfill $\Box$ \bigskip} 
+
+\renewcommand{\baselinestretch}{1.10} 
+
+\textwidth=17cm \textheight=25cm 
+
+\addtolength{\topmargin}{-40pt} \addtolength{\oddsidemargin}{-2cm} 
+\addtolength{\evensidemargin}{-2cm} 
+
+\setlength{\unitlength}{1mm} 
+
+
+
+\begin{document} 
+
+
+\title{Homework 3 : Dedekind Domains; Factorization} 
+\author{Hyojin Kim} 
+\date{april 19, 2019} 
+\maketitle 
+
+In this note prove that rings of integers in number fields are Dedekind domains,
+and hence that their ideals factor uniquely into products of prime ideals.
+We will bring some basic definitions and statements from the first and the second notes.
+
+\section{Integral closure of Dedekind domains} 
+
+\begin{lem}\label{3.30} 
+Every integral domain $B$ containing a field $k$ and algebraic over $k$ is itself a field.
+\end{lem} 
+
+\begin{pf}
+Let $\beta$ be a nonzero element of $B$. We have to prove that it has an inverse in $B$.
+Because $\beta$ is algebraic over $k$, the ring $k[\beta]$ is finite-dimensional as a $k$-vector space, 
+and the map $x \mapsto \beta x :k[\beta] \rightarrow k[\beta]$ is injective because $B$ is an integral domain.
+From linear algebra we deduce that the map is surjective, and so there is an element $\beta^\prime \in k[\beta]$ such that $\beta\beta^\prime =1$.
+\end{pf}
+
+\begin{thm}\label{3.29}
+Let $A$ be a Dedekind domain with field of fractions $K$,
+and let $B$ be the integral closure of $A$
+in a finite separable extension $L$ of $K$.
+Then $B$ is a Dedekind domain.
+\end{thm}
+
+\begin{pf}
+By definition, a Dedekind domain is an integrally closed Noetherian integral domain.
+We first show thah the integral closure $B$ is Noetherian.
+
+Note that for an integrally closed integral domain $A$ with field of fractions $K$,
+and the integral closure $B$ of $A$ in a seperable extension $L$ of $K$ of degree $m$,
+there exists free $A$-submodules $M$ and $M^\prime$ of $L$ such that
+\[
+M \subset B \subset {M^\prime}.
+\]
+
+Therefore $B$ is a finitely generated $A$-module if $A$ is Noetherian,
+and it is free of rank $m$ if $A$ is a principal ideal domain.
+
+Hence $B$ is contained in a finitely generated $A$-module.
+It follows that every ideal in $B$ is finitely generated when regarded as an $A$-module
+(being a submodule of a Noetherian $A$-module) and as an ideal(=$B$-module).
+
+Since $B$ is the integral closure of $A$ in an algebraic extension $L$ of its field of fractions, $B$ is integrally closed.
+It remains to prove that every nonzero prime ideal $\mathfrak{q}$ of $B$ is maximal.
+Let $\beta \in \mathfrak{q}$, $\beta \neq 0$.
+Then $\beta$ is integral over A,
+and so there is an equation
+\[
+\beta^n + a_1 \beta^{n-1} + \cdots + a_n = 0,~a_i \in A,
+\]
+which we may suppose to have the minimum poosible degree.
+Then $a_n \neq 0$.
+As $a_n \in \beta B \cap A$,
+we have that $\mathfrak{q} \cap A \neq (0)$.
+But $\mathfrak{q} \cap A$ is a prime ideal, and so it is a maximal ideal $\mathfrak{p}$ of $A$, and $A/\mathfrak{p}$ is a field.
+Since $B/\mathfrak{q}$ is an integral domain, and the map
+\[
+a+\mathfrak{p} \mapsto a+ \mathfrak{q}
+\]
+identifies $A/\mathfrak{p}$ with a subfield $B/\mathfrak{q}$.
+As $B$ is integral over $A$, $B/\mathfrak{q}$ is algebraic over $A/\mathfrak{p}$.
+Above lemma implies that $B/\mathfrak{q}$ is a field, and hence that $\mathfrak{q}$ is maximal.
+\end{pf}
+
+\begin{thebibliography}{alpha} 
+\bibitem{M} James. S. Milne, \emph{Algebraic Number Theory (v3.07)}, 2017. Available at www.jmilne.org/math/. 
+\bibitem{S} P. Samuel, \emph{Algebraic Theory of Numbers}, traslated from the French by Allan J.Silberger, HERMANN, Paris, 1970. 
+\end{thebibliography} 
+
+\end{document} 
