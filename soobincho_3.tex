@@ -1,0 +1,477 @@
+\documentclass[12pt,reqno]{amsart}
+\usepackage[utf8x]{inputenc}
+\usepackage{amssymb,amsmath,latexsym}
+\usepackage{epsfig}
+\usepackage{mathrsfs}
+\usepackage[OT2, T1]{fontenc}
+
+\DeclareSymbolFont{cyrletters}{OT2}{wncyr}{m}{n}
+\DeclareMathSymbol{\Sha}{\mathalpha}{cyrletters}{"58}
+
+\usepackage{color}
+\newcommand{\pk}{\color{magenta}}
+\newcommand{\bk}{\color{black}}
+%\usepackage{showkeys}
+\renewcommand{\baselinestretch}{1.1}
+\usepackage{epic,eepic,wrapfig,color, ifthen}
+\usepackage{url}
+ \oddsidemargin 0in
+ \evensidemargin 0in
+ \topmargin -0.6in
+ \textwidth 6.5in
+ \textheight 9in
+
+\def\pf{{\medskip\noindent {\bf Proof. }}}
+\def\qed{{\hfill $\Box$ \bigskip}}
+
+
+\renewcommand{\atop}[2]{\substack{{#1}\\{#2}}}
+\def\1{{\bf 1}}
+
+
+
+\def\BB{{\cal B}}
+\def\wh{\widehat}
+\def\wt{\widetilde}
+\def\pf{\noindent{\bf Proof.} }
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+\def\bee{\begin{equation}}
+\def\eee{\end{equation}}
+\def\ep{\epsilon}
+\def\de{\delta}
+\def\til{\tilde}
+\def\nn{\nonumber}
+
+\newcommand{\expr}[1]{\left( #1 \right)}
+\newcommand{\cl}[1]{\overline{#1}}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{example}[thm]{Example}
+\numberwithin{equation}{section}
+\def\ee{\varepsilon}
+\def\qed{{\hfill $\Box$ \bigskip}}
+\def\NN{{\cal N}}
+\def\AA{{\cal A}}
+\def\MM{{\cal M}}
+\def\BB{{\cal B}}
+\def\CC{{\cal C}}
+\def\LL{{\cal L}}
+\def\DD{{\cal D}}
+\def\FF{{\cal F}}
+\def\EE{{\cal E}}
+\def\QQ{{\cal Q}}
+\def\RR{{\mathbb R}}
+\def\R{{\mathbb R}}
+\def\L{{\bf L}}
+\def\K{{\bf K}}
+\def\S{{\bf S}}
+\def\A{{\bf A}}
+\def\Z{{\mathbb Z}}
+\def\Q{{\mathbb Q}}
+\def\E{{\mathbb E}}
+\def\F{{\mathbb F}}
+\def\P{{\mathbb P}}
+\def\N{{\mathbb N}}
+\def\sK{{\mathscr K}}
+\def\sO{{\mathcal O}}
+\def\sE{{\mathscr E}}
+\def\sG{{\mathfrak G}}
+\def\eps{\varepsilon}
+\def\wh{\widehat}
+\def\wt{\widetilde}
+\def\pf{\noindent{\bf Proof.} }
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+\def\bee{\begin{equation}}
+\def\eee{\end{equation}}
+\def\rd{\mathrm d}
+\def\Dc{{\overline D}^c}
+\def\Uc{{\overline U}^c}
+\def\Rd{\bR^d}
+\def\sms{\setminus}
+
+
+
+\begin{document}
+
+
+\title
+{ \bf Review: A Heuistic for Boundedness of Ranks of Elliptic Curves}
+ \author{Soobin Cho}
+
+\maketitle
+
+
+
+
+\section{Introduction and History}
+
+It is well known that the set $E(\Q)$ of rational points of an elliptic curve $E$ over $\Q$ has the structure of an abelian group. In 1922, Mordell proved that ${\rm rk \;} E(\Q) < \infty$. Then, it is natural to ask the question of boundedness: 
+
+\smallskip
+{\bf Conjecture $\mathbf{1.1}$.} Does there exists a constant $B>0$  such that for every elliptic curve $E$ over $\Q$, one has ${\rm rk }\; E(\Q) \le B$?
+
+\smallskip
+
+In the article, the authors presented a probabilistic model providing a heuristic for the arithmetic of elliptic curves and proved theorems about the model that suggest  ${\rm rk \;} E(\Q) \le 21$ for all but finitely many elliptic curves $E$. This model can be summarized as follows. Fix an increasing function $X(H)$. Then, also fix an increasing function $\eta(H)$ which grow sufficiently slowly and satisfies $X(H)^{\eta(H)} = H^{1/12 + o(1)}$ as $H \to \infty$. Then, model an elliptic curve $E$ of height $H$ as follows.
+
+\smallskip
+
+\noindent (Step 1) Choose $n$ from the pair $\{\lceil \eta(H) \rceil, \lceil \eta(H) \rceil + 1\}$ uniformly at random.
+
+\noindent (Step 2) Choose $A_E \in M_n(\Z)_{\text{alt}}$ with entries bounded by $X(H)$ in absolute value, uniformly at random.
+
+\noindent Then $(\text{coker} \; A_E)_{\text{tors}}$ models $\Sha(E)$, the Shafarevich-Tate group of E, and $\text{rk}\;(\text{ker} \; A_E)$ models $\text{rk} \; E(\Q)$.
+
+Thus, heuristically, for an elliptic curve $E$ of height $H$, we have that by Theorem 7.2.1,
+\begin{align*}
+\P(\text{rk} \; E(\Q) \ge r) = \P( \text{rk}\;(\text{ker} \; A_E) \ge r) = H^{-(r-1)/24 + o(1)} \qquad \text{as} \;\; H \to \infty.
+\end{align*}
+
+Since the number of elliptic curves of height $H$ is known as $O(H^{5/6})$, this heuristic suggests that there are only finitely many $E$ over $\Q$ with $\text{rk} \; E(\Q) > 21$ which gives a big clue for the answer of Conjecture $\mathbf{1}$. Moreover, it also lead to the prediction that for each fixed $ 1 \le r \le 20$, the number of $E$ of height up to $H$ satisfying $\text{rk} \; E(\Q) \ge r$ is approximately $H^{(21-r)/24 + o(1)}$ as $H \to \infty$.
+
+\subsection{Brief history of boundedness guesses.}
+
+Many authors have proposed guesses as to whether Conjecture $1$ is true, and their thoughts have shifted from positive to negative over time. In 1960, Honda conjectured that even for any abelian variety $A$ over $\Q$, there is a constant $c_A$ such that ${\rm rk }\; A(K) \le c_A[K:\Q]$ for every number field $K$ not only when $K = \Q$. However, from the mid-1960s to the present, it seems that the common belief is that ranks are unbounded. Here are two possible reasons for this opinion shift towards unboundedness:
+
+\smallskip
+ 1. Tate and Shafarevich (1967) and Ulmer (2002) constructed families of elliptic curves over $\F_p(t)$ (not a number field) in which the rank is unbounded.
+
+ 2. The lower bound for the maximum rank of an elliptic curve over $\Q$ has been increasing. The current record is held by Elkies (2006), who found an elliptic curve $E$ over $\Q$ of rank $\ge 28$, and an infinite family of elliptic curves over $\Q$ of rank $\ge 19$.
+
+\smallskip
+
+Some authors have even proposed a rate at which rank grow relative to the conductor $N$:
+
+\indent $\bullet$ Ulmer (2002),
+$$
+\limsup_{N \to \infty} \frac{ {\rm rk }\; E(\Q) } { \log N/ \log \log N} > 0?
+$$
+\indent $\bullet$ Farmer, Gonek and Hughes (2007),
+$$
+\limsup_{N \to \infty} \frac{ {\rm rk }\; E(\Q) } { \sqrt{\log N \log \log N}} = 1?
+$$
+
+\vspace{2mm}
+
+\subsection{Conjectures for rank $2$ asymptotics.}
+
+We first recall some basic notions in the theory of elliptic curves.
+
+\begin{definition}
+{\rm
+(1) (Quadratic twist) First assume that $char(K) \neq 2$. Let $E$ be an alliptic curve over $K$ of the form:
+\begin{align*}
+y^2 = x^3 + a_2x^2 + a_4x + a_6.
+\end{align*}
+Given $d \in K\setminus K^2$, the quadratic twist of $E$ is the curve $E_d$, defined by the equation:
+\begin{align*}
+dy^2 = x^3 + a_2x^2 + a_4x + a_6.
+\end{align*}
+Observe that $E_d(x,y) = 0$ if and only if $E(x,y\sqrt{d}) = 0$. Hence, the two elliptic curves $E$ and $E_d$ are isomorphic over the field extension $K(\sqrt{d}) \cong K[X]/(X^2-d)$.
+
+Now assume that $char(K) = 2$. Let $E$ be an elliptic curve over $K$ of the form:
+\begin{align*}
+y^2 + a_1xy + a_3y = x^3 + a_2x^2 + a_4x + a_6.
+\end{align*}
+Given $d \in K\setminus \{0\}$, the quadratic twist of $E$ is the curve $E_d$, defined by the equation:
+\begin{align*}
+y^2 + a_1xy + a_3y = x^3 + (a_2 + da_1^2)x^2 + a_4x + a_6 + da_3^2.
+\end{align*}
+In this case, we can check that $E_d(x,y) = 0$ if and only if $E(x, y+(a_1x+a_3)\zeta) =0$ where $\zeta$ is any of the solutions of the equation $X^2+X+d=0$ in fixed algebraic closure of $K$. Hence, the two elliptic curves $E$ and $E_d$ are isomorphic over the field extention $K[X]/(X^2+X+d)$.
+
+\smallskip
+
+(2) (Fundamental discriminant) $D \in \Z$ is a fundamental discriminant if and only if one of the following statements holds:
+\begin{align*}
+&\indent \bullet D \equiv 1 \; \text{(mod 4)} \; \text{and is square-free}; \\
+&\indent \bullet D = 4m, \; \text{where} \; m \equiv 2 \; \text{or} \; 3 \; \text{(mod 4) and } m \; \text{is square-free}.
+\end{align*}
+
+There exists a one-to-one correspondence between the set of fundamental discriminants with the union of set of quadratic fields and $\Q$, that is, each nontrivial fundamental discriminant is the discriminant of a unique (up to isomorphism) quadratic number field.
+
+\smallskip
+
+(3) ((naive) Height) An elliptic curve $E$ over $\Q$ is isomorphic to the projective closure of a curve $y^2 = x^3 + Ax + B$ for a unique pair of integers $(A,B)$ such that there is no prime $p$ such that $p^4 | A$ and $p^6 | B$. Define the (naive) height of $E$ by
+\begin{align*}
+\text{ht} \; E:= \max \{|4A^3|, |27B^2|\}.
+\end{align*}
+
+\smallskip
+
+(4) (Conductor for the simplified form) Let an elliptic curve $E$ over $\Q$ has a Weierstrass equation in the simplified form $y^2 = x^3 + Ax + B$. Let $p$ be a prime in $\Z$. By reducing each of the coefficients $A$ and $B$ modulo $p$, we obtain the equation of a cubic curve $\widehat{E}$ over the finite field $\mathbb{F}_p$. If $\widehat{E}$ is a non-singular curve, then we say that $E$ has good reduction at $p$. Else if $\widehat{E}$ has a cusp (i.e. the discriminant of $\widehat{E}$ equals to $0$ and $A = 0$ (mod $p$)), then we say that $E$ has additive reduction at $p$. Otherwise, if $\widehat{E}$ has a node,  (i.e. the discriminant of $\widehat{E}$ equals to $0$ and $A \neq 0$ (mod $p$)), then we say that $E$ has multiplicative reduction at $p$.
+
+For each prime $p \in \Z$, define the quantity $f_p$ as follows:
+\begin{align*}
+f_p = \begin{cases}
+0, & \mbox{if} \; E \; \text{has good reduction at} \; p, \\
+1, & \mbox{if} \; E \; \text{has multiplicative reduction at} \; p, \\
+2, & \mbox{if} \; E \; \text{has additive reduction at} \; p, \; \text{and} \; p \neq 2,3, \\
+2+ \delta_p, & \mbox{if} \; E \; \text{has additive reduction at} \; p, \; \text{and} \; p \in \{2,3\}.
+\end{cases}
+\end{align*}
+
+Then, the conductor $N_{E/\Q}$ of an elliptic curve $E$ over $\Q$ is defined as
+\begin{align*}
+N_{E/\Q} := \prod_{p: \; \text{prime}} p^{f_p}.
+\end{align*}
+
+}
+\end{definition}
+
+\begin{example}\label{htEd}
+{\rm
+ Let $E$ be an alliptic curve over $\Q$ of the form $y^2 = x^3 + Ax +B$ for some constants $A$ and $B$ such that $4A^3 + 27B^2 \neq 0$. Then, for each $d \in \Q \setminus \Q^2$, the quadratic twist of $E_d$ is defined by the equation $dy^2 = x^3 + Ax + B$. We can check that this is equivalent to the equation $y^2 = x^3 + d^2Ax + d^3B$. Hence, we obtain $\text{ht} \; E_d = \max \{ |4d^6A^3|, |27d^6B^2|\} \asymp d^6$ for general elliptic curve $E$ over $\Q$.
+}
+\end{example}
+\vspace{2mm}
+
+Fix an elliptic curve $E$ over $\Q$. Let $d$ range over fundamental discriminants in $\Z$. Given $r \in Z_{\ge 0}$ and $D>0$, define
+\begin{align*}
+N_{\ge r}(D)&:= \# \{d: |d| \le D, \; \text{rk} \; E_d(\Q) \ge r \},\\
+N_{\ge r, \; \text{even}}(D)&:= \# \{d: |d| \le D, \; \text{rk} \; E_d(\Q) \ge r, \;\text{and} \; w(E_d) = +1 \}, \\
+N_{\ge r, \; \text{odd}}(D)&:= \# \{d: |d| \le D, \; \text{rk} \; E_d(\Q) \ge r, \;\text{and} \; w(E_d) = -1 \},
+\end{align*}
+where $w(E_d) \in \{-1, +1\}$ is the global root number of $E_d$.
+
+\smallskip
+{\bf Conjecture $\mathbf{1.2}$.} Does it hold that
+\begin{align*}
+N_{\ge 2, \; \text{even}}(D) = D^{3/4 +o(1)}\; ?
+\end{align*}
+
+\smallskip
+
+In other words, the prediction is that for $d$ such that $w(E_d) = +1$, the probability that $\text{rk} \; E_d(\Q) \ge 2$ should be about $d^{3/4+o(1)}/d \simeq d^{-1/4}$. Since $\text{ht} \; E_d \asymp d^6$ by Example \ref{htEd}, this prediction corresponds to a probability of $h^{-1/24}$ for an elliptic curve of height $h$.
+
+\smallskip
+
+\begin{remark}
+{\rm
+(a) The Birch and Swinnerton-Dyer conjecture would imply the parity conjecture,
+
+\smallskip
+
+{\bf Conjecture $\mathbf{1.3}$.} Does it hold that
+\begin{align*}
+w(E) = (-1)^{\text{rk} \; E(\Q)} \; ?
+\end{align*}
+
+\smallskip
+
+Let $E$ be an elliptic curve over $\Q$ with $w(E) = +1$. Then, it is known that for a weight $3/2$ cusp form $f = \sum a_nq^n$ such that for all odd fundamental discriminants $d<0$ coprime to the conductor of $E$, we have $a_{|d|} = 0$ if and only if $L(E_d, 1) = 0$. If the BSD conjecture is true, then the condition $L(E_d,1)=0$ is equivalent to $\text{ord}_{s=1} L(E_d, s) \ge 2$, which is equivalent to $\text{rk} \; E_d(\Q) \ge 2$. The Ramanujan conjecture predicts that $a_|d|$ is an integer satisfying $|a_|d|| \le |d|^{1/4 + o(1)}$. Hence, heuristically, we can expect that $a_|d| = 0$ occurs with "probability" $|d|^{-1/4+o(1)}$ and hence $N_{\ge 2, \; \text{even}}(D)  \simeq \sum_{|d| \le D} |d|^{-1/4+o(1)} \simeq |D|^{3/4 + o(1)}$.
+
+\smallskip
+
+(b) Conrey, Keating, Rubinstein and Snaith used random matrix theory to get a developed conjecture, that is, there exist constants $c_E, e_E \in \R$ such that
+
+\smallskip
+{\bf Conjecture $\mathbf{1.4}$.}
+\begin{align*}
+N_{\ge 2, \; \text{even}}(D) = (c_E + o(1))D^{3/4} (\log D)^{e_E}\; ?
+\end{align*}
+
+On the other hand, Watkins developed a variant for the family of all elliptic curves over $\Q$, that is, there exists a constant $c_0>0$ such that
+
+\smallskip
+{\bf Conjecture $\mathbf{1.5}$.}
+\begin{align*}
+\# \{E: \text{ht} \; E \le H, \; \text{rk} \; E_d(\Q) \ge 2, \;\text{and} \; w(E_d) = +1 \} =  (c_0 + o(1)) H^{19/24} (\log H)^{3/8}\; ?
+\end{align*}
+
+\smallskip
+
+An elementary seive argument shows that 
+\begin{align*}
+\# \{E: \text{ht} \; E \le H\} = (\kappa + o(1))H^{5/6},
+\end{align*}
+where $\kappa:=2^{4/3}3^{-3/2} \zeta(10)^{-1}$. Hence, the Conjecture $5$ is related to Conjecture $4$ through the equation that $19/24 = 5/6 - 1/24$.
+
+\smallskip
+
+}
+\end{remark}
+
+\subsection{Conjectures for rank $3$ asymptotics.}
+
+Recall that the conjectures for $N_{\ge 2, \; \text{even}}(D)$ are in agreement. However, the conjectures for $N_{\ge 3, \; \text{odd}}(D)$ are very different in literature. For instance, Rubin and Silveberg conjectured a lower bound $N_{\ge 3, \; \text{odd}}(D) >> D^{1/3}$ for many $E$ while the Birch and Swinnerton-Dyer conjecture implies $N_{\ge 3, \; \text{odd}}(D) \asymp D^{1/4}$. In the model used in this paper suggests that $N_{\ge 3}(D) \asymp D^{1/2+o(1)}$ and $N_{\ge 3, \; \text{odd}}(D) \asymp D^{1/2 + o(1)}$.
+
+\vspace{2mm}
+
+{\bf Notation.} For $x=(x_1, ..., x_m)$ and $a=(a_1, ..., a_n)$, the notation $f(x,a) \ll_a g(x,a)$ means that for every fixed $a$, there exists a positive constant $C(a)$ such that $f(x,a) \le C(a) g(x,a)$ for all $x$. Then, $f(x,a) \asymp_a g(x,a)$ means that $f(x,a) \ll_a g(x,a)$ and $g(x,a) \ll_a f(x,a)$.
+
+For an abelian group $G$ and $n \in \N$, denote by $G[n]:= \{x \in G : nx = 0 \}$. For $p$ prime, define $G[p^\infty]:= \cup_{m \in \N} G[p^m]$ and define the $p$-rank of $G$ to be ${\rm dim_{\F_p}} G[p]$.
+
+For a commutative ring $R$, denote by $M_n(R)$ be the set of $n \times n$ matrices with entries in $R$. For $X >0$, let $M_n(\Z)_{\le X} \subset M_n(\Z)$ be the subset of matrices whose entries have absolute value less than or equal to $X$. We also let $M_n(R)_{\rm alt}$ be the set of alternating matrices, i.e. $A^T = -A$ and all the diagonal entries are $0$.
+
+For a subset $S \subset M_n(\Z_p)$, define ${\rm Prob}(S) = {\rm Prob}(S | A \in M_n(\Z_p))$ as the probability of $S$ with respect to the normalized Haar measure on the compact group $M_n(\Z_p)$.
+
+\section{Cohen-Lenstra Heuristics for Class Groups}
+
+\subsection{Class groups as cokernels of integer matrices}\label{modelCl}
+
+Let $K$ be a number field and $I$ be the group of nonzero fractional ideals of $K$. Let $P$ be the subgroup of $I$ consisting of principal fractional ideals. Then, the class group is defined as $\text{Cl} \; K:=I/P$. It is well-known that $\text{Cl}\; K$ is a finite abelian group. 
+
+Let $\sO_K$ be the ring of integers of $K$. Let $S_\infty$ be the set of all archimedean places of $K$ and $S$ be a finite set of places of $K$ containing $S_\infty$. Let $n:= \#(S \setminus S_\infty)$. Then, the Dirichlet unit theorem states that the unit group $\sO_K^\times$ is a finitely generated abelian group of rank $u:= \# S_\infty -1$ and the unit group $\sO_{K,S}^\times$, where $\sO_{K,S}$ is the ring of $S$-integers of $K$, is also a finitely generated abelian group of rank $\#S - 1 = n + u$. 
+
+Let $I_S$ be the group of fractional ideals generated by the nonarchimedean primes in $S$ and let $P_S$ be the subgroup of $I_S$ consisting of principal fractional ideals. Assume that primes of $S$ generate the whole finite group $\text{Cl}\; K$ so that we obtain $I_S/P_S \simeq I/P = \text{Cl} \; K$.
+
+Note that the group $I_S$ is a free abelian group of rank $n$ and $P_S$ is the image of the homomorphism $\sO_{K,S}^\times \to I_S$, whose kernel is the torsion subgroup of $\sO_{K,S}^\times$ so that $P_S$ is a free abelian group of rank $n+u$. It follows that we can represent $\text{Cl} \; K$ as the cokernel of a homomorphism $P_S \simeq \Z^{n+u} \to \Z^n \simeq I_S$. Write this cokernel as $\text{coker} \; A$ for some $n \times (n+u)$ matrix $A$ over $\Z$. By viewing this matrix $A$ as a matrix over $\Z_p$, we get $\text{coker} \; (A: \Z_p^{n+u} \to \Z_p^n) = (\text{Cl} \; K) [p^\infty]$.
+
+
+\subsection{Distribution of class groups}
+
+Let $\sK$ be the family of all imaginary quadratic fields up to isomorphism. In this section, we discuss about the distribution of $\text{Cl} \; K$ as $K$ varies over $\sK$. To deal with this problem, we define the density of a subset $S \subset \sK$. For $X>0$, let $\sK_{\le X}$ be the set of elements in $\sK$ whose absolute value of the discriminant is less than or equal to $X$. Then, the density $\mu$ is defined by
+\begin{align*}
+\mu(S) = \mu(S | K \in \sK) := \lim_{X \to \infty} \frac{\#(S \cap \sK_{\le X})}{\# \sK_{\le X}},
+\end{align*}
+whenever this limit make sense.
+
+It is known that $\# \text{Cl} \; K$ diverges as the discriminant of $K$ goes to infinity. More precisely, Siegel proved that $\# \text{Cl} \; K = |D|^{1/2+o(1)}$, where $D$ is the discriminant of $K$. 
+It follows that for any finite abelian group $G$, we have that $\mu(\text{Cl} \; K \simeq G \} = 0$ since the set $\{K \in \sK : \text{Cl} \; K \simeq G\}$ is finite.
+
+Hence, to get a meaningful density, we consider the $p$-Sylow subgroup $(\text{Cl} \; K)[p^\infty]$ for a fixed prime $p \neq 2$ instead of whole group $\text{Cl} \; K$. (There is a different phenomenon in case $p = 2$.) For each finite abelian $p$-group $G$, the density $\mu((\text{Cl} \; K)[p^\infty] \simeq G)$ is expected to positive. Here, we give two conjectures for its value.
+
+\smallskip
+{\bf Conjecture $\mathbf{2.1}$.}
+The density is inversely proportional to $\# \text{Aut} \; G$:
+\begin{align*}
+\mu((\text{Cl} \; K)[p^\infty] \simeq G) = \frac{1}{\eta(p)} \frac{1}{\# \text{Aut} \; G} \; ?
+\end{align*}
+The normalization constant $\eta(p)$ is needed to make $\mu$ a probability measure and is given by
+\begin{align*}
+\eta(p) : = \sum_{G: \text{fintie abelian} \; p \text{-group}} \frac{1}{\# \text{Aut} \; G} = \prod_{i=1}^\infty (1-p^{-i})^{-1}.
+\end{align*}
+
+\smallskip
+
+{\bf Conjecture $\mathbf{2.2}$.}
+Recall that $\sK$ is the family of all \textit{imaginary} quadratic fields.
+Applying the discussion in Section \ref{modelCl} with unit rank $u = \# S_\infty -1 = 0$, one models $(\text{Cl} \; K)[p^\infty]$ as $(\text{coker} \; A)[p^\infty]$ for a "random" $n \times n$ matrix $A$ over $\Z$ or $\Z_p$. That is,
+\begin{align*}
+\mu((\text{Cl} \; K)[p^\infty] \simeq G) &= \lim_{n \to \infty} \lim_{X \to \infty} \frac{ \#\{A \in M_n(\Z)_{\le X} : (\text{coker} \; A)[p^\infty] \simeq G \}}{\# M_n(\Z)_{\le X}} \;\; ? \\
+& = \lim_{n \to \infty} \P\big( \text{coker} \; A \simeq G | A \in M_n(\Z_p)\big).
+\end{align*}
+
+(The equality of the probabilities in the last two expressions follows from the fact that $\Z$ is uniformly distributed in $\Z_p$ asymptotically .)
+
+\vspace{2mm}
+
+In fact, the above two Conjectures are equivalent.
+
+\begin{thm}{\rm (Friedman and Washington.)} For every finite abelian $p$-group $G$,
+\begin{align*}
+\lim_{n \to \infty} \P\big( \text{coker} \; A \simeq G | A \in M_n(\Z_p)\big) = \frac{1}{\eta(p)} (\# \text{Aut} \; G)^{-1}.
+\end{align*}
+\end{thm}
+
+We remark that if we consider the family of \textit{real} quadratic fields instead of $\sK$, then the unit rank $u$ becomes $1$ so that Section \ref{modelCl} suggests that $\text{Cl} \; K$ should be modeled by the cokernel of a "random" $n \times (n+1)$ matrix.
+
+\section{Heuristics for Shafarevich-Tate Groups}
+
+In this section, we study conjectures for the Sharfarevich-Tate group $\Sha(E)$ of an elliptic curve $E$ over $\Q$, analogous to the conjectures for class groups.
+
+Let $\sE$ be the set of elliptic curves, one in each $\Q$-isomorphism class. Then, for $H>0$, define $\sE_{\le H}:= \{E \in \sE : \text{ht} \; E \le H \}$. Similar to the previous section, for a subset $S \subset \sE$, we define densities
+\begin{align*}
+\mu(S):=& \lim_{H \to \infty} \frac{\# (S \cap \sE_{\le H})}{\# \sE_{\le H}},\\
+\mu(S | \text{rk} \; E(\Q) = r):=& \lim_{H \to \infty} \frac{\# \{E \in S \cap \sE_{\le H} \;|\; \text{rk} \; E(\Q) = r \}}{\# \{ E \in \sE_{\le H}\;|\;  \text{rk} \; E(\Q) = r\}},
+\end{align*}
+whenever the limits make sense. We mention that if there is no $E \in \sE$ such that $\text{rk} \; E(\Q) = r$, then the density $\mu(S | \text{rk} \; E(\Q) = r)$ does not exist.
+
+The $n$-Selmer group $\text{Sel}_n \; E$ and the Shafarevich-Tate group $\Sha(E)$ associated to an elliptic curve $E \in \sE$ are related by the exact sequence
+\begin{align}\label{exact}
+0 \rightarrow E(\Q) \otimes \frac{\Q_p}{\Z_p} \rightarrow \text{Sel}_{p^\infty} \rightarrow \Sha(E)[p^\infty] \rightarrow 0.
+\end{align}
+
+The idea of this paper is that instead of predicting a distribution of $\text{rk} \; E(\Q)$ in isolation, model all three invariants at once. This allows us check the model against other theorems and conjectures in the literature.
+
+
+\begin{definition}
+{\rm
+
+(1) A pairing $[,]$ is called alternating if $[m, m] = 0$ for all $m$.
+
+\noindent (2) A pairing $[,]$ is called nondegenrate if $[m, n] = 0$ for all $m$ implies that $n=0$.
+
+\noindent (3) A symplectic finite abelian group is a pair $(G, [,])$, where $G$ is a finite abelian group and $[,] : G \times G \to \Q/\Z$ is a nondegenerate alternating pairing.
+}
+\end{definition}
+
+Let $\sG$ be a set of symplectic finite abelian groups containing exactly one from each isomorphism class. If $J$ is a finite abelian group, then $J \times J^\vee$ equipped with a natural pairing, that is, $[(x,f), (y,g)] = f(y)-g(x)$, is a symplectic finite abelian group. Moreover, it is known that every symplectic finite abelian group is isomorphic to one of this form. It follows that symplectic finite abelian groups have square order.
+Let $\sG_p$ be the set of $G \in \sG$ such that $\# G = p^n$ for some $n \in 2\Z$.
+
+\smallskip
+
+Most experts conjectured that $\Sha(E)$ is finite. In 1962, Cassels constructed a alternating pairing $\left\langle \; , \; \right\rangle: \Sha(E) \times \Sha(E) \to \Q/\Z$. He also proved that $\left\langle \; , \; \right\rangle$ is a nondegenerate pairing provided that $\Sha(E)$ is finite. Hence, if $\Sha(E)$ is finite, $(\Sha(E), \left\langle \; , \; \right\rangle)$ is a symplectic finite abelian group, and in particular $\#\Sha(E)$ is a square.
+
+It follows that the distribution of $\Sha(E)$ will be different from the conjectural distribution of class gorups given in {Conjecture $2.1$.} and {Conjecture $2.2$.} It is natural to ask the following question for the distribution of $\Sha(E)$.
+
+
+\smallskip
+{\bf Question $\mathbf{3.1}$.} Let $p$ be a prime. Given $r \ge 0$ and $G \in \sG_p$, what is the density
+\begin{align*}
+\mu\big(\Sha(E)[p^\infty] \simeq G \; | \; \text{rk} \; E(\Q) = r\big)?
+\end{align*}
+\smallskip
+
+There are three conjectural answers to this question in the literature.
+
+\smallskip
+
+$(\mathscr{D}_r)$ Delaunay, in analogy with the Cohen-Lenstra heuristics for class groups, made conjectures on the answer to Question $3.1$. That is, the answer is given by the probability measure $\mathscr{D}_r = \mathscr{D}_{r,p}$ on $\sG_p$ defined by
+\begin{align*}
+\mathscr{D}_r(G):= \frac{1}{\eta(r,p)}\frac{\# G^{1-r}}{\# \text{Aut}\; G} = \frac{\# G^{1-r}}{\# \text{Aut}\; G}  \prod_{i \ge r+1} (1-p^{1-2i}), \quad \text{(cf.~ Conjecture $2.1$.,)}
+\end{align*}
+where $\text{Aut} \; G$ denotes the group of automorphisms of $G$ that respects the pairings.
+
+\smallskip
+
+$(\mathscr{T}_r)$ Work of Poonen and Rains [PR12], and Bhargava, Kane, Lenstra, Poonen and Rains [BKLPR15] predicted the isomorphism type of the Selmer group $\text{Sel}_p \; E$ and the short exact sequence \eqref{exact}, respectively. One can extract a probability measure $\mathscr{T}_r$ on $\sG_p$ which model $\Sha(E)[p^\infty]$ from these works.
+
+\smallskip
+
+$(\mathscr{A}_r)$ In [BKLPR15], the authors also showed that $\text{coker}(A: \Z_p^n \to \Z_p^n)_{\text{tors}}$ is a symplectic fintie ablian $p$-group for each $A \in M_n(\Z_p)_{\text{alt}}$. Inspired by this result, let 
+\begin{align*}
+\mathscr{A}_{n,r}:= \P\big( (\text{coker} \; A)_{\text{tors}} \simeq G | A \in M_n(\Z_p)_{\text{alt}}, \; \text{rk}_{\Z_p}(\text{ker} \; A) = r \big).
+\end{align*}
+Then, we define a probability measure $\mathscr{A}_r$ on $\sG_p$ by
+\begin{align*}
+\mathscr{A}_r(G):= \lim_{n \equiv r \; (\text{mod} \; 2), \; n \to \infty} \mathscr{A}_{n,r}(G).
+\end{align*}
+
+\smallskip
+
+In fact, these three answers are equivalent.
+
+\begin{thm}[BKLPR15, Theorem 1.6(c) and 1.10(b)]
+The probability measures $\mathscr{D}_r$, $\mathscr{T}_r$ and $\mathscr{A}_r$ coincide.
+\end{thm}
+
+\begin{remark}
+{\rm
+Note that class groups of quadratic fields are large if the field is imaginary $(u=0)$ and conjecturally small if the field is real $(u=1)$. (Recall that $(\text{Cl} \; K)[p^\infty]$ is modeled by $\text{coker}(A : \Z_p^{n+u} \to \Z_p^n)$.) Just as this observation, conjecturally, $\Sha(E)$ is large on average when $r = 0$ and small when $r \ge 1$.
+Indeed, from the conjecture $(\mathscr{D}_r)$, we see that $\mu(\# \Sha(E) \le B \; | \; \text{rk} \; E(\Q) = 0) = 0$ for every fixed $B>0$ while for each $r \ge 1$, $\mu(\# \Sha(E) \le B \; | \; \text{rk} \; E(\Q) = r) \to 1$ as $B \to \infty$. This phenomenon comes from the numerator $\# G^{1-r}$.
+}
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
