@@ -1,0 +1,122 @@
+\documentclass[11pt]{amsart}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{amssymb,amscd,amsthm,latexsym,verbatim}
+\usepackage{amssymb,amscd,amsthm,verbatim,syntonly}
+\usepackage{graphics}
+\usepackage{latexsym}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{cite}
+\usepackage{graphicx,subfigure}
+\usepackage{blkarray}
+\usepackage[left=3.6cm,right=3.6cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{indentfirst}
+\parindent=1em
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{f}{Fact}
+\newtheorem{theom}{Theorem}
+\newtheorem{claim}{claim}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{qe}[thm]{Question}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\theoremstyle{definition}
+\newtheorem{exmp}[thm]{Example} 
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{q}{Question}
+
+
+\newcommand{\redhom}{\tilde{H}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\sgn}{\operatorname{sgn}}
+
+\begin{document}
+
+\title[]
+{Abel-Jacobi Map}
+\author{Dong Suk Kim}
+
+\maketitle
+
+
+\section{Differential forms}
+
+\begin{defn} A $holomorphic$ $1$-$form$ $(resp. meromorphic)$ on an open set $V \subset \mathbb{C}$ is an expression $\omega$ of the form 
+\begin{equation*} \omega=f(z)dz
+\end{equation*}
+where $f$ is a holomorphic(resp.meromorphic) function on $V$. We say that $\omega$ is a holomorphic(resp.meromorphic) 1-form $in$ $the$ $coordinate$ $z$.
+
+\end{defn}
+\vspace{1ex}
+ Clearly we need some compatibility condintion to define on a Riemann surface. But we don't give exact definition of a differential form of Riemann surface and adopt this definition as local expression of a differentail form of Riemann surface.
+
+\vspace{2ex}
+ We employ the following notation.
+\vspace{2ex} 
+\newline $\mathcal{O}(U)$ = $\{$ holomorphic functions $f : U \to \mathbb{C}$ $\}$.
+\newline $\Omega^{1}(U)$ = $\{$ holomorphic 1-forms defined on $U$ $\}$.
+\vspace{3ex}
+
+\section{periods}
+
+\begin{defn}
+A linear functional $\lambda : \Omega^{1}(X) \to \mathbb{C}$ is a $period$ if it is $\int_{[c]}$ for some homology class $[c] \in H_1(X,\mathbb{Z})$.
+\end{defn}
+
+\begin{defn} Let $X$ be a compact Riemann surface. Let $\Lambda$ be the set of periods. Let $\Omega^{1}(X)^{*}$ be dual of the holomorphic 1-form space. The $Jacobian$ of $X$, denoted by Jac($X$), is the quotient group 
+
+\begin{center}
+
+Jac($X$)= ${ \Omega^{1}(X)^{*} \over \Lambda}$
+\end{center} 
+
+\end{defn}
+
+\vspace{2ex}
+In[3], B. Riemann showed $y^{m}=h(x)$ ($h(x)$ is an algebraic function or elementary function) can be extended to complex curve by cutting a rays along  branch points. So he conceptually viewed algebraic functions as geometrical sufraces. He identified a brach point with $n$-sheet $\mathbb{C}$ $\cup$ $\{$ $\infty$ $\}$'s corresponding to the multiplicity $n$ of the branch point.
+
+\begin{thm}
+Suppose $f$ : $X \to \mathbb{P}^{1}$ is an n-sheeted holomorphic covering mapping between compact Riemann surface $X$ and $\mathbb{P}^{1}$. Let $g$ be the topological genus of Riemann surface. Then 
+
+\begin{center}
+$g$=${b \over 2}-n+1$
+\end{center} where $b$ is equal to the total mulitipliciity of $f$ minus the number of branch point.
+\end{thm}
+If we choose a basis for $\Omega^{1}(X)$ and the rank is $g$, we may consider the Abel-Jacobi map $A$ as mapping to $\mathbb{C}^{g}/\Lambda$.
+\begin{defn}
+ Fix a base point $p_0$ in $X$. The $Abel$-$Jacobi$ $map$ is a map $A$ : $X$ $\to$ Jac($X$). For every point $p \in X$, choose a curve $c$ from $p_0$ to $p$; define the map $A$ as follows:
+\begin{equation*}
+A(p) = \left(\int_{p_0}^{p} \omega_1, \int_{p_0}^{p} \omega_2,..., \int_{p_0}^p \omega_g \right) 
+\end{equation*}
+\end{defn}
+Note that the choice of curve does not affect the value of $A(p)$. Riemann studied more general Abel-Jacobi map. The following map is called canonical map  $\Psi_\alpha$: $X^{g}$ $\to$ Jac($X$), 
+\begin{equation*}
+\Psi_\alpha \left\{ x_1,...,x_\alpha \right\} = \left( \sum_{i=1}^{\alpha} \psi_1 x_i, ... , \sum_{i=1}^{\alpha} \psi_{g} x_i \right).
+\end{equation*}
+\indent Here $\left\{ \psi_i \right\}$ denote $\left\{ \sum_{i=1}^{\alpha} \int_{x_0}^{x_i} \omega_1 \right\}$. 
+Suppose $g$ is not minimal in the sense of Abel's addition theorem in the second article. Then we can find rational functions of $x'_1,..,x'_{g-1}$ of $x_1,...,x_g$ such that $\psi_i x_1+..+\psi_i x_g \ne \psi_i x'_1+..+\psi_i x'_{g-1}$+$v_i$ for all $i$.
+Then $\Psi_{g} X^{g} \subseteq \Psi_{g-1} X^{g-1} + ( v_1,..,v_{g} ) $. So If $\Psi_{g}$ is surjective, $\Psi_{g-1}$ is also surjective. But $X^{g-1}$ is of complex dimension $g-1$ and Jac($X$) is of complex dimension $g$. In short, the $g$ in the Abel's theorem is the genus of Riemann surface made by $w^{2}=P(x)$
+Next, we shall study details of proof.
+
+
+\vspace{4ex}
+
+
+
+\begin{thebibliography}{30}
+\bibitem{OF}
+O.Forster, \emph{Lectures on Riemann Surfaces}. Springer-Verlag, New York, 1999.
+\bibitem{OR}
+Olav Afrnfinn Laudal, Ragni Piene \emph{The legacy of Niels Henrik Abel}. Springer-Verlag, New York, 2004
+\bibitem{BR}
+B. Riemann, \emph{Theorie der Abelschen Functionen}. J. f$\ddot{u}$r Math. 54, 1857
+\end{thebibliography}
+
+\end{document}
