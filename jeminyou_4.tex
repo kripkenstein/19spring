@@ -1,0 +1,207 @@
+\documentclass[a4paper,11pt]{article}
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz-cd}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{titling}
+\usepackage[left=2cm,right=2cm,top=1cm,bottom=2cm,a4paper]{geometry}
+\usepackage{mathrsfs}
+\usepackage{calrsfs}
+
+
+
+\begin{document}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prp}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{exm}[thm]{Example}
+\newtheorem{nota}[thm]{Notation}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+
+
+
+\font\myfont=cmr12 at 20pt
+
+\title{\vspace{-5ex} \myfont The Tate Curve}
+\author{Jemin You}
+\date{\vspace{-5ex}}
+\maketitle
+
+\setcounter{section}{-1}
+
+We discuss the Tate curve, and how it is utilized to compute the cusps.
+The 0th section is taken from the article of Katz in `Modular Functions of One Variable III', Springer LNM 350, while the others are from the book of Katz and Mazur.
+
+This week's notes is going to be a preparation for the next week's one, where we will calculate the cusps for one of our moduli problems.
+
+\section{The Tate Curve}
+
+Consider a holomorphic function $f$ defined on the complex upper half-plane $\mathfrak{H}$.
+If $f$ satisfies the usual transformation behaviour
+\[
+f(\frac{a\tau+b}{c\tau+d})=(c\tau+d)^kf(\tau)
+\]
+without the holomorphic/meromorphic assumption at $\infty$, $f$ defines a holomorphic function on the punctured disk
+\[
+\tilde{f}(q)=f(\tau), \enskip q=e^{2\pi i\tau}\in\mathbb{D}\setminus\{0\}.
+\]
+Therefore, $\tilde{f}$ admits a Laurent series expansion at $0$, with possibly infinite tale(=negative degree part).
+To say $f$ is meromorphic at $0$ is to say the tail is finite, and holomorphic is to say it has no tale.
+
+Now define for a pair of elliptic curve and an invariant differential $(E,\omega)$
+\[
+F(E,\omega)=(\omega_2)^{-k}f(\frac{\omega_1}{\omega_2})
+\]
+where Im$\frac{\omega_1}{\omega_2}>0$ and $\omega_1,\omega_2$ generate the periods $\{\int_{\gamma}\omega:\gamma\in$$H_1(E;\mathbb{Z})\}$.
+Then we are asking about whether the function
+\[
+F(\mathbb{C}^{\times}/q^{\mathbb{Z}},2\pi izdz)
+\]
+is contained in $\mathbb{C}((q))$ or $\mathbb{C}[[q]]$.
+Now, using the Weierstrass $\mathcal{P}$-functions and an appropriate affine coordinate change, the term appearing can easily be seen to be embedded in $\mathbb{P}^2$ as
+\[
+y^2+xy=x^3+B(q)x+C(q), \omega=\frac{dx}{x+2y}, \textnormal{ where}\enskip B(q), C(q) \in q\mathbb{Z}[[q]].
+\]
+This last equation defines an elliptic curve over $\mathbb{Z}((q))$.
+We denote this by $Tate(q)$ and call it the $\textit{Tate Curve}$ and denote by $\omega_{\textnormal{can}}$ the differential form above.
+
+Over this curve we have the Eisenstein series $E_4,E_6$ and the discriminant $\Delta$, and also the $j$-invariant
+\[
+j=\frac{1}{q}+744+\cdots, \enskip E_4=1+240\sum_{n\geq1}\sigma_3(n)q^n, \enskip E_6=1-504\sum_{n\geq1}\sigma_5(n)q^n, \enskip \Delta=q\prod_{n=1}^{\infty}(1-q^n)^{24}.
+\]
+
+
+
+
+\section{Coarse Moduli Scheme near $\infty$ via Tate Curve}
+
+
+The formula from the last section shows that $A[[q]]=A[[1/j]]$.
+The Tate curve from the last section looks like they might be useful for cusp analysis from the motivative definition above.
+Indeed,
+
+\begin{prp}
+Let $A$ be a ring, $\mathcal{P}$ be a representable moduli problem on $Ell/A$, $\mathfrak{M}(\mathcal{P})$ the base scheme of the representing elliptic curve.
+Then there exists a morphism
+\[
+\mathcal{P}_{Tate(q)/A((q))} \to \mathfrak{M}(\mathcal{P})_{A((q))}
+\]
+of $A((q))$ scheme which is a finite Galois covering, hence giving as isomorphism
+\[
+\mathcal{P}_{Tate(q)/A((q))}/\pm1 \simeq \mathfrak{M}(\mathcal{P})_{A((q))}
+\]
+where the $\pm1$ denotes the automorphism of the Tate curve $x \mapsto x$, $y \mapsto -x-y$.
+\end{prp}
+
+Recall the notations from the last notes:
+$A$ is an excellent regular noetherian ring, $\mathcal{P}$ a finite relatively representable moduli problem on $Ell/A$, normal near infinity.
+Then we obtain:
+
+\begin{thm}
+In the above settings, if some prime number $l$ is invertible in $A$ or $\mathcal{P}$ is representable near infinity.
+Then the finite $A[[q]]$-scheme $\widehat{Cusps}(\mathcal{P})$ is the normalization of $A[[q]]$ in the finite normal $A((q))$ scheme
+\[
+\mathcal{P}_{Tate(q)/A((q))}/\pm1.
+\]
+
+\end{thm}
+
+Therefore, to study the cusps one can study the Tate curve.
+Moreover, if we introduce the commutative group scheme $T[N]$ over $\mathbb{Z}[q,q^{-1}]$ defined by
+\[
+T[N](A) =\{\textnormal{ collection of pairs }(X,i) \textnormal{ where }X\in A, \enskip 0 \leq i <N, \enskip X^N=q^i\} 
+\]
+with obvious multiplication $(X,i)*(Y,j)=(XY,i+j)$, then we can furthermore reduce the calculation to $T[N]$ for our `level $N$' moduli problems.
+
+This seems plausible, because the groups $T[N]$ algother look like they are made to count torsion points on the Tate curve, and hence for `level $N$ problems', there must play a crucial role.
+$T[N]$also possesses an alternating pairing $e_N:T[N] \times T[N] \to \mu_N$ defined by
+\[
+e_N(X,Y)=X^j/Y^i
+\]
+where $\mu_N$ is the group scheme
+\[
+\mu_N(A)=\{\textnormal{primitive } N^{\textnormal{th}} \textnormal{ root of unity of } A\}.
+\]
+
+Also from transcendental theory, one can recover the $x$ and $y$ of the Tate curve of $N$-torsion points as as elements of $\mathbb{Z}((q)) \otimes \mathbb{Z}[\zeta_N,1/N]$ where $\zeta_N$ is a primitive $N^{\textnormal{th}}$ root of unity.
+Therefore, our level $N$ moduli problems should actually be considered at least over the ring $\mathbb{Z}[\zeta_N]$.
+
+We will do that next week.
+I will finish the notes for the course by stating theorems of the book concerning the cusps, and do some calculations for special case in the next week.
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
