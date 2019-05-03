@@ -88,8 +88,17 @@ We can induce maps $H^{q}(G/H,A^{H}) \rightarrow H^{q}(G,A^{H})$ and $H^{q}(G,A^
 
 Composing these two maps give us a inflation map $H^{q}(G/H,A^{H}) \rightarrow H^{q}(H,A)$
 
-We can show that 
+We can show that $0 \rightarrow H^{1}(G/H,A^{H}) \rightarrow H^{1}(G,A) \rightarrow H^{1}(H,A)$
+is exact. (first map is inflation and second map is restriction.)
+
+Also if we asume $H^{i}(H,A)=0$ for $1 \leq i \leq q-1$, a sequence
+
+$0 \rightarrow H^{q}(G/H,A^H) \rightarrow H^{q}(G,A) \rightarrow H^{q}(H,A)$ by inflation and restriction is exact. Proof is by dimension shifting.
 \section{cohomology of profinite group}
 
+let A be a discrete G-module and let $(U_{i};i \in I)$ be the family of all open normal subgroups of G.
+Then $G \simeq \varprojlim G/U_{i}$.
 
+By inflation we have a homomorphism $\lambda ^{j}_{i}:H^{q}(G/U_{i},A^{U_{i}}) \rightarrow H^{q}(G/U_{j},A^{U_{j}})$ 
+Inverse limit of this abelian groups is called the q-th cohomology group of G in A.
 \end{document}
