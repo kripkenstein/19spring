@@ -1,0 +1,112 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{kotex}
+
+\renewcommand{\baselinestretch}{1.5}
+\setlength{\oddsidemargin}{.5in}
+\setlength{\evensidemargin}{1.5pt}
+
+\usepackage{amsmath,amssymb,amsthm} %\usepackage{amscd}
+\usepackage{latexsym}
+\usepackage{fancyhdr}
+\usepackage{float,srcltx,epsfig}%for .eps file
+\usepackage{multirow}
+\usepackage{enumerate}
+\usepackage{mathrsfs}
+\usepackage{algorithm}
+\usepackage{amsfonts}
+\makeindex %
+\newenvironment{explain}{\begin{quote}}{\hfill $\square$\end{quote}}
+\newenvironment{glos}[1]{\begin{quote}$\quad$\textbf{#1}\\}{\end{quote}}
+\newenvironment{problem}[1]{\begin{quote}$\quad$\textbf{#1}\\}{\end{quote}}
+\newenvironment{theorem}[1]{\begin{quote}$\quad$\textbf{#1}\\}{\end{quote}}
+
+
+\newcommand{\myindex}[1]{#1\index{#1}}
+\newcommand{\mi}[1]{#1\index{#1}}
+\newcommand{\SK}{\hspace{0.3cm}}
+
+%\newcommand{\Z}{{\mathbb Z}} 
+%\newcommand{\Q}{{\mathbb Q}}
+%\newcommand{\F}{{\mathbb F}}
+%\newcommand{\R}{{\mathbb R}}
+%\newcommand{\C}{{\mathbb C}}
+
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+\newcommand{\ord}{{\operatorname{ord }}}
+\newcommand{\ind}{{\operatorname{ind }}}
+\newcommand{\rank}{{\operatorname{Rank}}}
+
+\pagestyle{myheadings}   %
+\pagestyle{fancyplain}
+\fancyhf{}% clear all fields
+%\fancyhead[LE,RO]{\bfseries\thepage}
+%\fancyhead[LO]{\bfseries\tiny\rightmark}
+%\fancyfoot[RO]{\textsf{\small{Copyright \copyright 2018 Jung Hee Cheon.}}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\def\BigRoman{\uppercase\expandafter{\romannumeral\number\count 255 }}
+\def\Romannumeral{\afterassignment\BigRoman\count255=}
+\title{elementary Galois cohomolog}
+\author{Donghyun Kim }
+\date{May 2019}
+
+\begin{document}
+Let E/F be a Galois extension. And G be a its Galois group.
+
+If we denote all finite Galois extensions of F by $K_{i}$, and define $U_{i} = G(E/K_^{I})$
+
+, G is a inverse limit of $G/U_{i}$
+
+We can think action of G on aditive group of E as a G-module. 
+Then it is trivial because $H^{q}(G,E)=0$ for all $q \geq 1$ by normal basis theorem in finite extension case and cohomology group is inverse limit of finite extension case.
+
+Thus we will think about multiplicative group of E. 
+
+Again, $H^{q}(G,E^{*}) \simeq \varprojlim H^{q}(G(K_{i}/F)),$
+
+Then $H^{1}(G,E^{*})=0$  
+
+pf)Let f be a 1-cocycle of G in $E^{*}$
+
+Then by linear independence of character, there exists $c \in E^{*}$ such that
+
+$b = \sum_{x \in G}f(x) x(c) \noteq 0$
+
+For any $y \in G$,
+
+$y(b) = \sigma_{x \in G}[yf(x)][yx(c)] = f^{-1}(y)b$
+
+Thus f is a coboundary.
+
+This result is equivalent to classical Hilbert Theorem 90.
+
+Now we will define Brauer Group.
+
+Let $E_{1}/F, E_{2}/F$ be two Galois extensions and define $G_{i} = G(E_{i}/F)$
+
+Suppose j is an F-homomorphism from $E_{1} $ to $E_{2}$.
+
+Then $J(E_{1})/F$ is Galois extension and the restriction $g \rightarrow g|j(E_{1})$
+
+yields a morphism from $G_{2}$ to $G_{1}$ 
+
+Using inflation map, we get
+
+$J^{*}: H^{q}(G_{1},E_{1}^{*}) \rightarrow H^{q}(G_{2},E_{2}^{*})$.
+
+Also, $J^{*}$ is independent of j.
+
+Because for another morhpism j', $j'(j)^{-1}\in G_{1}$ induce inner automorphism of $G_{1}$ and it is identity on $H^{q}(G_{1},E_{1}^{*})$
+
+Thus, when we choose E as a separable closure, a choice is irrelevent in cohomological point of view. 
+
+The Brauer group is defined by $H^{2}(G(E/F),E^{*})$ (E is a separable closure)
+
+
+
+
+
+\end{document}
+\maketitle
