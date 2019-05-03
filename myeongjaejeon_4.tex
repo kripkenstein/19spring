@@ -1,0 +1,214 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amscd, amsthm, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\marginparwidth 40pt
+\marginparsep 10pt
+\topmargin -20pt
+\headsep 10pt
+\textheight 8.7in
+\textwidth 6.65in
+\linespread{1.2}
+
+\title{The canonical height on an elliptic curve}
+\author{Myeong Jae Jeon}
+\date{}
+
+
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage[normalem]{ulem}
+\usepackage{enumerate}
+\usepackage[utf8]{inputenc}
+\usepackage[top=1 in,bottom=1in, left=1 in, right=1 in]{geometry}
+\usepackage{blindtext}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage{romannum}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+
+\urlstyle{same}
+\newcommand{\matlab}{{\sc Matlab} }
+\newcommand{\cvec}[1]{{\mathbf #1}}
+\newcommand{\rvec}[1]{\vec{\mathbf #1}}
+\newcommand{\ihat}{\hat{\textbf{\i}}}
+\newcommand{\jhat}{\hat{\textbf{\j}}}
+\newcommand{\khat}{\hat{\textbf{k}}}
+\newcommand{\minor}{{\rm minor}}
+\newcommand{\trace}{{\rm trace}}
+\newcommand{\spn}{{\rm Span}}
+\newcommand{\rem}{{\rm rem}}
+\newcommand{\ran}{{\rm range}}
+\newcommand{\range}{{\rm range}}
+\newcommand{\mdiv}{{\rm div}}
+\newcommand{\proj}{{\rm proj}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\attn}[1]{\textbf{#1}}
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{main}{Main Theorem}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{Notation}[thm]{Notation}
+\newtheorem{ex}[thm]{Example}
+\newtheorem*{note}{Note}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{exercise}{Exercise}
+\theoremstyle{definition}
+\newtheorem*{Rule}{Rule}
+\newcommand{\bproof}{\bigskip {\bf Proof. }}
+\newcommand{\eproof}{\hfill\qedsymbol}
+\newcommand{\Disp}{\displaystyle}
+\newcommand{\qe}{\hfill\(\bigtriangledown\)}
+\setlength{\columnseprule}{1 pt}
+
+\newcommand{\rr}{\mathbb{R}}
+
+\newcommand{\al}{\alpha}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\aff}{aff}
+
+\def\mathLarge#1{\mbox{\LARGE $#1$}}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+ In the proof of the Mordell-Weil Theorem, we defined the height function \(h\) on elliptic curves. Motivated by quasi-quadratic nature of the height function, Andr\'e N\'eron and John Tate constructed a quadratic form whose difference with \(h_f\) is bounded. In this article, we briefly review the construction of this quadratic form which is called the canonical height.
+\end{abstract}
+
+\section{Motivation} \label{section-H}
+
+    In this section, we state a relationship between height functions and the addition law on an elliptic curve. First, we introduce "big-\(O\)" notation.
+    
+    \begin{Notation}
+        For real-valued functions \(f\) and \(g\) on a set \(S\), we write 
+        \begin{align*}
+            f = g + O(1)
+        \end{align*}
+        if there exist constants \(C_1\) and \(C_2\) such that 
+        \begin{align*}
+            C_1 \le f(P) - g(P) \le C_2 \text{   for all } P \in S
+        \end{align*}
+        We write \(f \ge g + O(1)\) or \(f \le g + O(1) \) if only the lower inequality or the upper inequality is true.
+    \end{Notation}
+    
+    \begin{thm}
+        Let \(E/K\) be an elliptic curve, an \(f\) be an even function on \(E\). Define \(h_f\) by
+        \begin{align*}
+            h_f(P) = h(f(P))
+        \end{align*}
+        Then for all \(P\), \(Q\) on \(E\) and \(m \in \mathbb{Z}\) the followings are true. \\
+        (a)
+        \begin{align*}
+           h_f(P+Q) + h_f(P-Q) = 2h_f(P) + 2h_f(Q) + O(1) 
+        \end{align*}
+        \quad where the \(O(1)\) depends on \(E\), \(f\). \\
+        (b)
+        \begin{align*}
+         h_f(P+Q) \le 2h_f(P) + O(1) 
+        \end{align*}
+        \quad where the \(O(1)\) depends on \(E\), \(f\), \(Q\). \\
+        (c)
+        \begin{align*}
+            h_f(mP) = m^2 h_f(P) + O(1) 
+        \end{align*}
+        \quad where the \(O(1)\) depends on \(E\), \(f\), and \(m\).
+    \end{thm}
+    
+    Theorem 1.2 shows that \(h_f\) behaves like a quadratic form up to some bounded set depending on \(E\) and \(f\). Natural question followed by this interpretation is whether one could find an actual quadratic form that differs from \(h_f\) by a bounded amount. Indeed, N\'eron and Tate constructed a quadratic form whose difference with \(h_f\) is \(O(1)\).
+    
+\section{The Canonical Height} \label{section-C}
+    On their constructions on the desired quadratic form, N\'eron constructed it as a sum of "quasi-quadratic" local functions while Tate defined it as a simpler global form. We introduce two equivalent definitions of the canonical height.
+    
+    
+    \begin{defn}[N\'eron] Let \(E/K\) be an elliptic curve. The canonical (or N\'eron-Tate) height \(\hat{h}\) on \(E\) is defined by
+        \begin{align*}
+            \hat{h}(P) = \frac{1}{[K:\mathbb{Q}]} \sum_{v \in M_K} n_v \lambda_v(P)
+        \end{align*}
+    where \(M_K\) is the set of all absolute values on a number field \(K\) and \(\lambda_v\) is the local height function for \(E\) at \(v\).
+    \end{defn}
+    
+    \begin{defn}[Tate] Let \(E/K\) be an elliptic curve and \(f\) be any non-constant even function. The canonical (or N\'eron-Tate) height \(\hat{h}\) on \(E/K\) is defined by
+        \begin{align*}
+         \hat{h}(P) = \frac{1}{\deg(f)} \lim_{N \to \infty} 4^{-N} h_f( 2^N P)
+        \end{align*}
+    \end{defn}
+    
+    Remarkable fact is that the limit above exists and is independent of the choice of \(f\). The following theorem shows that \(\hat{h}\) is the desired quadratic form on \(E(K)\).
+    
+    \begin{thm}[N\'eron, Tate] The canonical height \(\hat{h}\) satisfies the followings. \\
+    (a) (Parallelogram Law) For all \(P\), \(Q\) on \(E\), we have
+        \begin{align*}
+            \hat{h}(P+Q) + \hat{h}(P-Q) = 2\hat{h}(P) + 2\hat{h}(Q)
+        \end{align*}
+    \\
+    (b) For all \(P\) on \(E\) and all \(m \in \mathbb{Z}\),
+        \begin{align*}
+            \hat{h}(mP) = m^2 \hat{h}(P)
+        \end{align*}
+    \\
+    (c) The pairing
+        \begin{align*}
+            & \langle \cdot, \cdot \rangle : E(\overline{K}) \cross E(\overline{K}) \rightarrow \mathbb{R}, \\
+             \langle P,& Q \rangle= \hat{h}(P+Q) - \hat{h}(P) - \hat{h}(Q)
+        \end{align*}
+        is bilinear. The pairing is called the canonical height (or N\'eron-Tate) pairing on \(E/K\)
+    \\
+    (d) The canonical height is a nonnegative function and
+        \begin{align*}
+             \hat{h}(P) = 0 \quad \text{if and only if} \quad P \text{ is a torsion point.}
+        \end{align*} 
+    \\
+    (e) For an even function \(f\) on \(E\),
+        \begin{align*}
+            (\deg f) \hat{h} = h_f + O(1)
+        \end{align*}
+        \quad where the \(O(1)\) depends on \(E\) and \(f\)
+    \end{thm}
+    
+    Theorem 2.3. (b),(c),(e) shows that the canonical height is the desired quadratic form: a quadratic form that differs from \(h_f\) by a bounded amount. On the other hand, theorem 2.3. (c),(d) shows that \(\hat{h}\) defines a positive definite quadratic form on \(E(K)/E_{tor}(K)\). Note that \(E(K)/E_{tor}(K)\) can be embedded into \(E(K) \otimes \mathbb{R}\) as a lattice. Thanks to the Mordell-Weil theorem, \(E(K) \otimes \mathbb{R}\) becomes a finite dimensional real vector space. Then the following lemma guarantees that the canonical height extends to a positive definite quadratic form on \(E(K) \otimes \mathbb{R}\)
+    
+    \begin{lemma} For a finite dimensional real vector space \(V\) and its lattice \(L\), suppose a quadratic form \(q\) on \(V\) satisfies the followings. \\
+    (a) For \(P \in L\), we have \(q(P) = 0 \) if and only if \( P = 0 \) \\
+    (b) For every constant \(C\), the set 
+        \begin{align*}
+            \{P \in L : q(P) \le C \}
+        \end{align*}
+       \quad is finite. \\
+    Then \(q\) is positive definite on \(V\)
+    \end{lemma}
+    
+    By theorem 1.2., together with theorem 2.3.(c)-(e), the canonical height and the lattice \(E(K)/E_{tor}(K)\) satisfy conditions of lemma 2.4. It follows that the \(\hat{h}\) extends to a positive definite quadratic form on a finite dimensional real vector space \(E(K) \otimes \mathbb{R} \). Moreover, the canonical height pairing extends to a positive definite hermitian form on \(E(K) \otimes \mathbb{C}\) in certain situations [1]. 
+    
+    Meanwhile, since the canonical height is non-negative for nontorsion points, it is natural to ask the lower bound of positive canonical height. There are two fundamental conjectures about lower bounds of the canonical height given by Lang and Lehmer and it is known that the abc conjecture implies Lang's conjecture.
+\begin{thebibliography}{}
+
+\bibitem{}
+ \href{http://homepages.warwick.ac.uk/staff/S.Siksek/papers/compheight3.pdf}{Siksek, S}
+ \emph{The height pairing on an elliptic curve with complex multiplication}. Arab Journal of Mathematical Sciences 5 (1999), 43-48.
+\bibitem{}
+ \href{https://www.springer.com/la/book/9780387094939}{Silverman, J. H.,
+ \emph{The Arithmetic of Elliptic Curves}. 2nd ed.,
+ Graduate Texts in Mathematics, vol. 106, Springer-Verlag, New York,~2009}
+ 
+\end{thebibliography}
+
+\end{document}
