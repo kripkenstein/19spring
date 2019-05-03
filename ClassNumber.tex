@@ -1,0 +1,59 @@
+\documentclass[11pt]{article}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\usepackage{amssymb, amsmath}
+
+\title{L-function and the Class Number Formula}
+\author{Kangsig Kim}
+
+\begin{document}
+
+\maketitle
+
+\textbf{Abstract.}
+We study how we can calculate the class number of a number ring by using the Dedekind zeta function. We establish the specific class number formula by using the properties of L-functions under the assumption that underlied number field is an abelian extension of $\mathbb{Q}$.
+\vspace{10mm}
+
+\section{Dedekind zeta function}
+Denote $\mathbb{A}$ the set of algebraic integers in $\mathbb{C}$. Let $K$ be a number field of degree $n$ over $\mathbb{Q}$, and let $R=\mathbb{A}\cap K$ be the ring of algebraic integers in $K$. The \textit{class number of $R$} is the number of ideal classes of $R$. For each real number $t\geq0$, let $i(t)$ the number of ideals $I$ of $R$ with index $|R/I|\leq t$.
+
+We give a result about the number of ideals of a number ring from algebraic number theory that we need in our discussion.
+\\
+\\
+\textbf{Lemma 1.}
+There exists a real number $\kappa$, depending on $R$ such that $i(t)=h\kappa t+\epsilon(t)$ where $h$ is the number of ideal classes in $R$ and $\epsilon(t)$ is $O(t^{1-1/n})$. Furthermore, $\kappa$ can be calculated from the properties of $R$.
+\vspace{5mm}
+\par
+We will deal with the ordinary Dirichlet series, so we use its property from complex analysis.
+\\
+\\
+\textbf{Lemma 2.}
+Suppose $\sum_{n\leq t}a_n$ is $O(t^r)$ for some real $r\geq0$. Then $\displaystyle\sum_{n=1}^{\infty}{a_n\over n^s}$ converges for $\Re(s)>r$, and it is analytic on that domain.
+\\
+\\
+
+The \textit{Dedekind zeta function} $\zeta_K$ of a number field $K$ is defined for $\Re(s)>1$ by
+\begin{equation*}
+\zeta_K(s)=\displaystyle\sum_{n=1}^{\infty}{j_n\over n^s}
+\end{equation*}
+where $j_n$ denotes the number of ideals $I$ of $R=\mathbb{A}\cap K$ with $|R/I|=n$. Lemma 1 shows that $\sum_{n\leq t}j_n$ is $O(t)$, so $\zeta_K(s)$ converges and is analytic on the half-plane $Re(s)>1$.
+
+Recall that the Riemann zeta function $\zeta(s)$ (which is $\zeta_\mathbb{Q}$) extends analytically in $\Re(s)>0$ except for a simple pole at $s=1$. We can extend $\zeta_K(s)$ as
+\begin{equation*}
+\zeta_K(s)=\displaystyle\sum_{n=1}^{\infty}{j_n-k\kappa \over n^s}+h\kappa\zeta(s)
+\end{equation*}
+for $\Re(s)>1$, where $h$ is the number of ideal classes in $R=\mathbb{A}\cap K$ and $\kappa$ is the number occurring in lemma 1. By lemma 1, 2, the ordinary Dirichlet series with coefficients $j_n-h\kappa$ converges to an analytic function on the half-plane $Re(s)>1-1/[K:\mathbb{Q}]$. Thus we obtain a meromorphic extension of $\zeta_K(s)$ on the half-plane $Re(s)>1-1/[K:\mathbb{Q}]$, analytic everywhere except for a simple pole at $s=1$.
+Now, from the extended formula for $\zeta_K(s)$, we get $h=\rho/\kappa$, where
+\begin{equation*}
+\rho=\lim_{s\to 1}{\zeta_K(s)\over \zeta(s)}.
+\end{equation*}
+The value of $\kappa$ can be computed from the properties of $R$, hence if we can calculate $\rho$ (without first knowing $h$), we can get the value of $h$. In other words, we can use the Dedekind zeta function to calculate the number of ideal classes in a number ring. 
+\\
+\\
+\par
+In the next paper, we prove explicit class number formula by using L-functions under the assumption that $K$ is an abelian extension of $\mathbb{Q}$.
+\\
+\\
+\section*{References}
+[1] Daniel A. Marcus, \textit{Number Fields}, 2nd ed., Springer, 2018
+
+\end{document}
